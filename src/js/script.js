@@ -57,7 +57,7 @@
     constructor(){
       const thisProduct = this;
 
-      console.log('new Product:', thisProduct);
+      console.log('++++new Product:', thisProduct);
 
     }
   }
@@ -65,7 +65,7 @@
   const app = {
     initMenu: function(){
       const testProduct = new Product();
-      console.log('testProduct:', testProduct);
+      console.log('>>>>>testProduct:', testProduct);
     },
 
     init: function(){
