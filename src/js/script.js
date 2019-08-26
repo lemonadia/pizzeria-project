@@ -64,12 +64,13 @@
 
   const app = {
     initMenu: function(){
+      const thisApp = this;
       const testProduct = new Product();
       console.log('>>>>>testProduct:', testProduct);
     },
 
     initData: function(){
-      const thisApp: this;
+      const thisApp = this;
 
       thisApp.data = dataSource;
     },
