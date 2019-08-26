@@ -4,8 +4,8 @@
   'use strict';
 
   const select = {
-    templateOf: {
-      menuProduct: '#template-menu-product',
+    templateOf: {    //obiekt
+      menuProduct: '#template-menu-product', //własciwość menuProduct, która zawiera selektor do szablonu produktu
     },
     containerOf: {
       menu: '#product-list',
@@ -49,15 +49,39 @@
   };
 
   const templates = {
-    menuProduct: Handlebars.compile(document.querySelector(select.templateOf.menuProduct).innerHTML),
+    menuProduct: Handlebars.compile(document.querySelector(select.templateOf.menuProduct).innerHTML), // obiekt templates, którym metoda menuProduct jest tworzona za pomocą biblioteki Handlebars
   };
 
 
   class Product{
-    constructor(){
+    constructor(id, data){  // constructor to funkcja
       const thisProduct = this;
 
+      thisProduct.id = id;          //zapisujemy właściwość instancji w konstuktorze
+      thisProduct.data =data;
+
+      thisProduct.renderInMenu();
+
       console.log('++++new Product:', thisProduct);
+
+
+    }
+    renderInMenu(){    // metoda, ktra bedzie renderowac (tworzyc) produkty na stronie
+      const thisProduct = this;
+
+      /* generate HTMl based on template */
+
+      const generatedHTML = templates.menuProduct(thisProduct.data);
+
+
+      /*create element using utils.createElementFromHtml*/
+
+      thisProduct.element = utils.createDOMFromHTML(generatedHTML); // obiekt utils znajduje się w pliku functions.js
+
+      /*find menu container*/
+
+      /* add element to menu */
+
 
     }
   }
@@ -65,6 +89,13 @@
   const app = {
     initMenu: function(){
       const thisApp = this;
+      console.log('$$$$thisApp.data:', thisApp.data); //  w thisApp.data znajduje sie obiekt products, który zawiera poszczególne produkty
+
+      for(let productData in thisApp.data.products){  // tworzymy pętle interująco po biekcie thisApp.data.products
+         new Product(productData, thisApp.data.products[productData]); // tworzymy instancję dla każdego produktu (nie zapisujemy jej w const)
+      }
+
+
       const testProduct = new Product();
       console.log('>>>>>testProduct:', testProduct);
     },
