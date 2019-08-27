@@ -76,7 +76,7 @@
 
       /*create element using utils.createElementFromHtml*/
 
-      thisProduct.element = utils.createDOMFromHTML(generatedHTML); // obiekt utils znajduje się w pliku functions.js
+      thisProduct.element = utils.createDOMFromHTML(generatedHTML); // obiekt utils znajduje się w pliku functions.js
 
       /*find menu container*/
 
@@ -84,7 +84,7 @@
 
       /* add element to menu */
 
-      menuContainer.appendChild(thisProduct.element); //dodajemy stworzony element do menu za pomoca metody appenChild 
+      menuContainer.appendChild(thisProduct.element); //dodajemy stworzony element do menu za pomoca metody appenChild
 
 
     }
