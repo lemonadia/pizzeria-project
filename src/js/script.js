@@ -8,7 +8,7 @@
       menuProduct: '#template-menu-product', //własciwość menuProduct, która zawiera selektor do szablonu produktu
     },
     containerOf: {
-      menu: '#product-list',
+      menu: '#product-list', // <div id="product-list" class="product-list container"></div>
       cart: '#cart',
     },
     all: {
@@ -22,7 +22,7 @@
       priceElem: '.product__total-price .price',
       imageWrapper: '.product__images',
       amountWidget: '.widget-amount',
-      cartButton: '[href="#add-to-cart"]',
+      cartButton: '[href="#add-to-cart"]',  // <a class="btn-primary" href="#add-to-cart">Add to cart</a>
     },
     widgets: {
       amount: {
@@ -65,9 +65,12 @@
       thisProduct.data =data;
 
       thisProduct.renderInMenu();
+      thisProduct.getElements();
       thisProduct.initAccordion();
+      thisProduct.initOrderForm();
+      thisProduct.processOrder();
 
-      console.log('++++new Product:', thisProduct);
+    //  console.log('++++new Product:', thisProduct);
 
 
     }
@@ -75,36 +78,42 @@
       const thisProduct = this;
 
       /* generate HTMl based on template */
-
       const generatedHTML = templates.menuProduct(thisProduct.data);
 
 
       /*create element using utils.createElementFromHtml*/
-
       thisProduct.element = utils.createDOMFromHTML(generatedHTML); // obiekt utils znajduje się w pliku functions.js
 
       /*find menu container*/
-
       const menuContainer = document.querySelector(select.containerOf.menu);
 
       /* add element to menu */
-
       menuContainer.appendChild(thisProduct.element); //dodajemy stworzony element do menu za pomoca metody appenChild
-
-
     }
 
+// metoda służąca odnalezieniu elementów w kontenerze produktu
+
+getElements(){
+  const thisProduct = this;
+
+  thisProduct.accordionTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
+  thisProduct.form = thisProduct.element.querySelector(select.menuProduct.form);
+  thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
+  thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
+  thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
+}
+
+
+//metoda, dzięki ktorej rozwijamy opcje produktu
 
   initAccordion(){
     const thisProduct = this;
 
     /* find the clickable trigger (the element that should react to clicking)*/
-
     const clickableTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
 
     /* START: click event listener to trigger */
-
-    clickableTrigger.addEventListener('click',function(){
+    thisProduct.accordionTrigger.addEventListener('click',function(){
 
       /* prevent default action for event */
       event.preventDefault();
@@ -134,12 +143,40 @@
     /* END: click event listener to trigger */
   })
   }
+
+
+  initOrderForm(){
+    const thisProduct = this;
+
+
+
+    thisProduct.form.addEventListener('submit', function(event){
+       event.preventDefault();
+       thisProduct.processOrder();
+    });
+
+    for(let input of thisProduct.formInputs){
+      input.addEventListener('change', function(){
+        thisProduct.processOrder();
+      });
+    }
+
+    thisProduct.cartButton.addEventListener('click', function(ecent){
+      event.preventDefault();
+      thisProduct.processOrder();
+    });
+
+
+  }//zakonczenie metody initOrderForm
+
+
+
+
+  processOrder(){
+    const thisProduct = this;
+
+  }
 }
-
-
-
-
-
 
 
 
@@ -154,8 +191,6 @@
       }
 
 
-      const testProduct = new Product();
-      console.log('>>>>>testProduct:', testProduct);
     },
 
     initData: function(){
