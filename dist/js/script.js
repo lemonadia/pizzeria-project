@@ -80,7 +80,6 @@
       /* generate HTMl based on template */
       const generatedHTML = templates.menuProduct(thisProduct.data);
 
-
       /*create element using utils.createElementFromHtml*/
       thisProduct.element = utils.createDOMFromHTML(generatedHTML); // obiekt utils znajduje się w pliku functions.js
 
@@ -101,6 +100,7 @@ getElements(){
   thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
   thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
   thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
+  thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
 }
 
 
@@ -147,8 +147,6 @@ getElements(){
 
   initOrderForm(){
     const thisProduct = this;
-
-
 
     thisProduct.form.addEventListener('submit', function(event){
        event.preventDefault();

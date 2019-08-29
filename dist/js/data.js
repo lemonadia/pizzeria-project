@@ -47,17 +47,17 @@ dataSource.products = {
       '<img class="active toppings-basil" src="images/pizza/basil.svg">',
     ],
     params: {
-      sauce: {
+      sauce: { // "kategorie" opcji, jest to klucz parametru, kó†ry stosujemy w atrybucie name w index.html
         label: 'Sauce',
-        type: 'radios',
+        type: 'radios',  // do wyboru tego sluzy input typu radio
         options: {
-          tomato: {label: 'Tomato', price: 0, default: true},
+          tomato: {label: 'Tomato', price: 0, default: true}, // w atrybucie balue podajemy klucz danej opcji
           cream: {label: 'Sour cream', price: 2},
         },
       },
       toppings: {
         label: 'Toppings',
-        type: 'checkboxes',
+        type: 'checkboxes', // a tu do wyboru zaznaczamy inputem checkbox 
         options: {
           olives: {label: 'Olives', price: 2, default: true},
           redPeppers: {label: 'Red peppers', price: 2, default: true},
