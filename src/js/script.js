@@ -184,28 +184,40 @@ getElements(){
 
   /* [DONE] START LOOP: for each paramId in thisProduct.data.params */
   for(let paramId in thisProduct.data.params){
+
     /* [DONE] save the element in thisProduct.data.params with key paramId as const param */
     const param = thisProduct.data.params[paramId];
 
     /* START LOOP: for each optionId in param.options */
     for(let optionId in param.options){
-      /* save the element in param.options with key optionId as const option */
+
+      /*  [DONE] save the element in param.options with key optionId as const option */
       const option = param.options[optionId]
       console.log('!!!!!option: ', option);
 
-      /* START IF: if option is selected and option is not default */
-        /* add price of option to variable price */
-      /* END IF: if option is selected and option is not default */
+      const optionSelected = formData.hasOwnProperty(paramId) && formData[paramId].indexOf(optionId) > -1;
+
+      /* [DONE] START IF: if option is selected and option is not default */
+      if(optionSelected && !option.default){ //jeżeli oopcjaSelected i opcja nie jest DOMYŚLNA
+
+        /* [DONE] add price of option to variable price */
+         price += option.price; // price = price + option.price, czyli dodajemy cene opcji do ceny produktu
+
+      /* [DONE]END IF: if option is selected and option is not default */
       /* START ELSE IF: if option is not selected and option is default */
+    } else if(!optionSelected && option.default){
         /* deduct price of option from price */
-      }
-      /* END ELSE IF: if option is not selected and option is default */
+        price -= option.price; //odejmujemy
+      /* [DONE] END ELSE IF: if option is not selected and option is default */
     }
-    /* END LOOP: for each optionId in param.options */
+    /* [DONE] END LOOP: for each optionId in param.options */
   }
   /* END LOOP: for each paramId in thisProduct.data.params */
+}
 
   /* set the contents of thisProduct.priceElem to be the value of variable price */
+  thisProduct.priceElem.innerHTML = price;
+}
 }
 
 
