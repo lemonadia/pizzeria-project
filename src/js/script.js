@@ -180,17 +180,20 @@ getElements(){
   /* [DONE] set variable price to equal thisProduct.data.price */
   let price = thisProduct.data.price;
 
+  /*Images code*/
+     const imageElements = thisProduct.imageWrapper;
+
   /* [DONE] START LOOP: for each paramId in thisProduct.data.params */
   for(let paramId in thisProduct.data.params){
 
     /* [DONE] save the element in thisProduct.data.params with key paramId as const param */
-    const param = thisProduct.data.params[paramId];
+    const param = thisProduct.data.params[paramId]; // paraId
 
     /* START LOOP: for each optionId in param.options */
     for(let optionId in param.options){
 
       /*  [DONE] save the element in param.options with key optionId as const option */
-      const option = param.options[optionId]
+      const option = param.options[optionId]  //optionId
       console.log('!!!!!option: ', option);
 
       const optionSelected = formData.hasOwnProperty(paramId) && formData[paramId].indexOf(optionId) > -1;
@@ -208,6 +211,24 @@ getElements(){
         price -= option.price; //odejmujemy
       /* [DONE] END ELSE IF: if option is not selected and option is default */
     }
+
+
+    /*IMAGES*/
+
+    const foundElements = imageElements.querySelectorAll('.' + paramId + '-' + optionId);
+
+      if(optionSelected){
+          for(let element of foundElements){
+            element.classList.add(classNames.menuProduct.imageVisible);
+          }
+    }else{
+         for(let element of foundElements){
+           element.classList.remove(classNames.menuProduct.imageVisible)
+         }
+    }
+
+
+
     /* [DONE] END LOOP: for each optionId in param.options */
   }
   /* END LOOP: for each paramId in thisProduct.data.params */
