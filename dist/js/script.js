@@ -3,7 +3,7 @@
 {
   'use strict';
 
-  const select = {
+  const select = { // w tej stałej mamy zapisane wszystkie ustawienia i selektory!
     templateOf: {    //obiekt
       menuProduct: '#template-menu-product', //własciwość menuProduct, która zawiera selektor do szablonu produktu
     },
@@ -68,6 +68,7 @@
       thisProduct.getElements();
       thisProduct.initAccordion();
       thisProduct.initOrderForm();
+      thisProduct.initAmountWidget(); //kl
       thisProduct.processOrder();
 
     //  console.log('++++new Product:', thisProduct);
@@ -101,6 +102,7 @@ getElements(){
   thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
   thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
   thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
+  thisProduct.amountWidget = thisProduct.element.querySelector(select.menuProduct.amountWidget);
 }
 
 
@@ -159,7 +161,7 @@ getElements(){
       });
     }
 
-    thisProduct.cartButton.addEventListener('click', function(ecent){
+    thisProduct.cartButton.addEventListener('click', function(event){
       event.preventDefault();
       thisProduct.processOrder();
     });
@@ -226,9 +228,6 @@ getElements(){
            element.classList.remove(classNames.menuProduct.imageVisible)
          }
     }
-
-
-
     /* [DONE] END LOOP: for each optionId in param.options */
   }
   /* END LOOP: for each paramId in thisProduct.data.params */
@@ -237,7 +236,77 @@ getElements(){
   /* set the contents of thisProduct.priceElem to be the value of variable price */
   thisProduct.priceElem.innerHTML = price;
 }
+
+initAmountWidget(){ // tworzy instację klasy AmountWidget i zapisuje ją we właściwości produktu
+  const thisProduct = this;
+
+  thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
 }
+}
+
+
+class AmountWidget{
+    constructor(element){
+      const thisWidget = this;
+
+      thisWidget.getElements(element);
+      thisWidget.setValue(thisWidget.input.value);
+      thisWidget.initActions();
+
+      console.log('AmountWidget: ', thisWidget);
+      console.log('constructor arguments: ', element);
+    }
+
+  getElements(element){
+     const thisWidget = this;
+
+     thisWidget.element = element;
+     thisWidget.input = thisWidget.element.querySelector(select.widgets.amount.input);
+     thisWidget.linkDecrease = thisWidget.element.querySelector(select.widgets.amount.linkDecrease);
+     thisWidget.linkIncrease = thisWidget.element.querySelector(select.widgets.amount.linkIncrease);
+   }
+
+
+ setValue(value){
+
+   const thisWidget = this;
+
+   const newValue = parseInt(value); //potrzebna do walidacje i sprawdzenia czy wartość tej stałej jest poprawna i mieści się w dopuszczalnym zakresie
+
+   /* TODO: Add Validation*/
+
+   thisWidget.value = newValue; // właściwość thisWidget gdzie znajduje się wartość przekazanego argumentu, pop rzekonwertowaniu go na liczbe
+   thisWidget.input.value = thisWidget.value;  // dzięki temu nowa wartość wyświetli się na stronie
+
+
+ }
+
+ initActions(){
+
+   const thisWidget = this;
+
+   thisWidget.input.addEventListener('change', function(event){
+          thisWidget.setValue(thisWidget.input.value);
+        });
+
+   thisWidget.linkDecrease.addEventListener('click', function(event){
+               event.preventDefault();
+               thisWidget.setValue(thisWidget.value-1);
+             });
+
+  thisWidget.linkIncrease.addEventListener('click', function(event){
+             event.preventDefault();
+             thisWidget.setValue(thisWidget.value+1);
+
+
+});
+
+
+   }
+
+
+ }
+
 
 
 
