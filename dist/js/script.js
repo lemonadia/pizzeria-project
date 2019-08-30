@@ -103,6 +103,7 @@ getElements(){
   thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
   thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
   thisProduct.amountWidget = thisProduct.element.querySelector(select.menuProduct.amountWidget);
+  thisProduct.amountWidgetElem = thisProduct.element.querySelector(select.menuProduct.amountWidget);
 }
 
 
@@ -303,10 +304,7 @@ class AmountWidget{
 
 
    }
-
-
  }
-
 
 
 
