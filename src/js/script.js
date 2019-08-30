@@ -277,6 +277,7 @@ class AmountWidget{
    /* TODO: Add Validation*/
 
    thisWidget.value = newValue; // właściwość thisWidget gdzie znajduje się wartość przekazanego argumentu, pop rzekonwertowaniu go na liczbe
+   thisWidget.announce(); //wywołanie
    thisWidget.input.value = thisWidget.value;  // dzięki temu nowa wartość wyświetli się na stronie
 
 
@@ -301,9 +302,15 @@ class AmountWidget{
 
 
 });
+}
 
+  announce(){
+    const thisWidget = this;
 
-   }
+    const event = new Event('updated');
+    thisWidget.element.dispatchEvent(event);
+  }
+
 
 
  }
