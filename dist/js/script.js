@@ -133,7 +133,6 @@ getElements(){
         /* START: if the active product isn't the element of thisProduct */
         if(activeProduct !== thisProduct.element){
 
-
           /* remove class active for the active product */
           activeProduct.classList.remove('active');
 
@@ -242,6 +241,9 @@ initAmountWidget(){ // tworzy instację klasy AmountWidget i zapisuje ją we wł
   const thisProduct = this;
 
   thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
+  thisProduct.amountWidgetElem.addEventListener('updated', function(event){
+    thisProduct.processOrder();
+  });
 }
 }
 
