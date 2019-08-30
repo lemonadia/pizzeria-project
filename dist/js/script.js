@@ -232,7 +232,9 @@ getElements(){
   }
   /* END LOOP: for each paramId in thisProduct.data.params */
 }
-
+/* multiply price by amount */
+  price *= thisProduct.amountWidget.value;
+  
   /* set the contents of thisProduct.priceElem to be the value of variable price */
   thisProduct.priceElem.innerHTML = price;
 }
