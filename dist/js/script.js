@@ -234,7 +234,7 @@ getElements(){
 }
 /* multiply price by amount */
   price *= thisProduct.amountWidget.value;
-  
+
   /* set the contents of thisProduct.priceElem to be the value of variable price */
   thisProduct.priceElem.innerHTML = price;
 }
@@ -255,6 +255,7 @@ class AmountWidget{
       const thisWidget = this;
 
       thisWidget.getElements(element);
+      thisWidget.value = settings.amountWidget.defaultValue;
       thisWidget.setValue(thisWidget.input.value);
       thisWidget.initActions();
 
@@ -280,8 +281,14 @@ class AmountWidget{
 
    /* TODO: Add Validation*/
 
-   thisWidget.value = newValue; // właściwość thisWidget gdzie znajduje się wartość przekazanego argumentu, pop rzekonwertowaniu go na liczbe
-   thisWidget.announce(); //wywołanie
+
+
+   if( newValue !== thisWidget.value && newValue >= settings.amountWidget.defaultMin && newValue <= settings.amountWidget.defaultMax ) {
+           thisWidget.value = newValue;
+           thisWidget.announce();
+         }
+
+
    thisWidget.input.value = thisWidget.value;  // dzięki temu nowa wartość wyświetli się na stronie
 
 
