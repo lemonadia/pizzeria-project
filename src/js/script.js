@@ -192,6 +192,7 @@ getElements(){
     thisProduct.cartButton.addEventListener('click', function(event){
       event.preventDefault();
       thisProduct.processOrder();
+      thisProduct.addToCart();
     });
 
 
@@ -224,7 +225,7 @@ getElements(){
 
       /*  [DONE] save the element in param.options with key optionId as const option */
       const option = param.options[optionId]  //optionId
-      console.log('!!!!!option: ', option);
+      //console.log('!!!!!option: ', option);
 
       const optionSelected = formData.hasOwnProperty(paramId) && formData[paramId].indexOf(optionId) > -1;
 
@@ -275,6 +276,13 @@ initAmountWidget(){ // tworzy instację klasy AmountWidget i zapisuje ją we wł
     thisProduct.processOrder();
   });
 }
+
+addToCart(){  // me
+  const thisProduct = this;
+
+  app.cart.add(thisProduct);
+}
+
 }
 
 
@@ -382,8 +390,15 @@ class Cart{
 
     thisCart.dom.toggleTrigger.addEventListener('click', function(event){
       thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
-
   });
+  }
+
+
+  add(menuProduct){
+    // const thisCart = this;
+
+    console.log('adding product', menuProduct);
+
   }
 }
 
