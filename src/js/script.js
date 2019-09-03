@@ -85,10 +85,6 @@
   };
 
 
-
-
-
-
   class Product{
     constructor(id, data){  // constructor to funkcja
       const thisProduct = this;
@@ -282,7 +278,7 @@ initAmountWidget(){ // tworzy instację klasy AmountWidget i zapisuje ją we wł
 }
 
 
-class AmountWidget{
+ class AmountWidget{
     constructor(element){
       const thisWidget = this;
 
@@ -359,6 +355,38 @@ class AmountWidget{
  }
 
 
+class Cart{
+  constructor(element){
+    const thisCart = this;
+
+    thisCart.products = []; // tablica, w której będziemy przechowywać produkty dodane do koszyka
+
+    thisCart.getElements(element);
+    thisCart.initActions();
+
+    console.log('%%% new Cart ', thisCart);
+  }
+
+  getElements(element){
+    const thisCart = this;
+
+    thisCart.dom = {}; // NOWOŚĆ - > obiekt przechowujący wszystkie el DOM wyszukane w komponencie koszyka
+
+    thisCart.dom.wrapper = element;
+    thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger);
+
+  }
+
+  initActions(){
+    const thisCart = this;
+
+    thisCart.dom.toggleTrigger.addEventListener('click', function(event){
+      thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
+
+  });
+  }
+}
+
 
 
   const app = {
@@ -392,9 +420,17 @@ class AmountWidget{
 
 
     },
+
+    initCart: function(){
+      const thisApp = this;
+
+      const cartElem = document.querySelector(select.containerOf.cart); //przekazujemy metodzie initCart wrapper koszyka
+      thisApp.cart = new Cart(cartElem); //instancja klasy Cart - mozemy ja wywolywac poza obiektem app za pomoca app.cart
+    }
   };
 
 
 
   app.init();
+  app.initCart();
 }
