@@ -291,10 +291,15 @@ initAmountWidget(){ // tworzy instację klasy AmountWidget i zapisuje ją we wł
   });
 }
 
-addToCart(){  // me
+addToCart(){
   const thisProduct = this;
 
+  thisProduct.name = thisProduct.data.name;
+  thisProduct.amount = thisProduct.amountWidget.value;
+
   app.cart.add(thisProduct);
+
+
 }
 
 }
@@ -396,6 +401,7 @@ class Cart{
 
     thisCart.dom.wrapper = element;
     thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger);
+    thisCart.dom.productList = thisCart.dom.wrapper.querySelector(select.cart.productList);
 
   }
 
@@ -409,7 +415,14 @@ class Cart{
 
 
   add(menuProduct){
-    // const thisCart = this;
+     const thisCart = this;
+
+     const generatedHTML = templates.cartProduct(app.productData);
+
+    const generatedDOM = utils.createDOMFromHTML(generatedHTML);
+  //  console.log('<<<<<generatedDOM:' generatedDOM);
+
+    thisCart.dom.productList.appendChild(generatedDOM);
 
     console.log('adding product', menuProduct);
 
