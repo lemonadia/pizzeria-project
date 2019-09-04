@@ -206,10 +206,13 @@ getElements(){
 
     /* [DONE] read all data from the form (using utils.serializeFormToObject) and save it to const formData */
         const formData = utils.serializeFormToObject(thisProduct.form);
-        console.log('^^^formData', formData);
+    //    console.log('^^^formData', formData);
+
+   thisProduct.params = {};
 
   /* [DONE] set variable price to equal thisProduct.data.price */
-  let price = thisProduct.data.price;
+
+    let price = thisProduct.data.price;
 
   /*Images code*/
      const imageElements = thisProduct.imageWrapper;
@@ -249,6 +252,14 @@ getElements(){
     const foundElements = imageElements.querySelectorAll('.' + paramId + '-' + optionId);
 
       if(optionSelected){
+        if(!thisProduct.params[paramId]){
+          thisProduct.params[paramId] = {
+            label: param.label,
+            options: {},
+          };
+        }
+        thisProduct.params[paramId].options[optionId] = option.label;
+
           for(let element of foundElements){
             element.classList.add(classNames.menuProduct.imageVisible);
           }
@@ -262,10 +273,13 @@ getElements(){
   /* END LOOP: for each paramId in thisProduct.data.params */
 }
 /* multiply price by amount */
-  price *= thisProduct.amountWidget.value;
+thisProduct.priceSingle = price;
+thisProduct.price = thisProduct.priceSingle * thisProduct.amountWidget.value;
 
-  /* set the contents of thisProduct.priceElem to be the value of variable price */
-  thisProduct.priceElem.innerHTML = price;
+/* set the contents of thisProduct.priceElem to be the value of variable price */
+thisProduct.priceElem.innerHTML = thisProduct.price;
+
+console.log("thisProduct.params: ", thisProduct.params);
 }
 
 initAmountWidget(){ // tworzy instację klasy AmountWidget i zapisuje ją we właściwości produktu
