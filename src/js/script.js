@@ -121,7 +121,7 @@
 
 // metoda służąca odnalezieniu elementów w kontenerze produktu
 
-getElements(){
+  getElements(){
   const thisProduct = this;
 
   thisProduct.accordionTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
@@ -486,6 +486,7 @@ for(let key of thisCart.renderTotalsKeys){
 
     thisCartProduct.getElements(element);
     thisCartProduct.initAmountWidget();
+    thisCartProduct.initActions();
 
   //  console.log('new CartProduct:', thisCartProduct);
   //  console.log('productData', menuProduct);
@@ -521,8 +522,36 @@ for(let key of thisCart.renderTotalsKeys){
     });
   }
 
+  remove(){
+    const thisCartProduct = this;
+
+    const event = new CustomEvent('remove',{ //odwołanie do instancji, dla której klinknięto fuzik usuwania
+      bubbles: true,
+      detatil: {    //właściwość detail - możemy w niej przekazać dowolne info do handlera eventu
+        cartProduct: thisCartProduct,
+      },
+  });
+
+    thisCartProduct.dom.wrapper.dispatchEvent(event);
 }
 
+  initActions(){
+
+    const thisCartProduct = this;
+
+  thisCartProduct.dom.edit.addEventListener('click', function(event){
+    event.preventDefault();
+  });
+
+  thisCartProduct.dom.remove.addEventListener('click', function(event){
+    event.preventDefault();
+    thisCartProduct.remove();
+  });
+  
+  console.log('czy dziala usuwanke?', thisCartProduct.remove);
+}
+
+} // koniec klasy
 
 
   const app = {
