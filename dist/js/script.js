@@ -74,7 +74,7 @@
       defaultMax: 9,
     },
     cart: {
-      defaultDeliveryFee: 20,
+      deliveryFee: 20,
     },
   };
 
@@ -279,7 +279,7 @@ thisProduct.price = thisProduct.priceSingle * thisProduct.amountWidget.value;
 /* set the contents of thisProduct.priceElem to be the value of variable price */
 thisProduct.priceElem.innerHTML = thisProduct.price;
 
-console.log("thisProduct.params: ", thisProduct.params);
+//console.log("thisProduct.params: ", thisProduct.params);
 }
 
 initAmountWidget(){ // tworzy instację klasy AmountWidget i zapisuje ją we właściwości produktu
@@ -391,7 +391,10 @@ addToCart(){
     thisCart.getElements(element);
     thisCart.initActions();
 
-    console.log('%%% new Cart ', thisCart);
+    thisCart.deliveryFee = settings.cart.deliveryFee;
+
+
+    // console.log('%%% new Cart ', thisCart);
   }
 
   getElements(element){
@@ -423,13 +426,31 @@ addToCart(){
   //  console.log('<<<<<generatedDOM:' generatedDOM);
 
     thisCart.dom.productList.appendChild(generatedDOM);
-
-    console.log('adding product', menuProduct);
+    //console.log('adding product', menuProduct);
 
     thisCart.products.push(new CartProduct(menuProduct, generatedDOM));
     //console.log('+++thisCart.products', thisCart.products);
 
+    thisCart.update();
+
   }
+
+  update(){
+     const thisCart = this;
+
+     thisCart.totalNumber = 0;
+     thisCart.subtotalPrice = 0;
+
+     for(let thisCardProduct of thisCart.products){
+       thisCart.subtotalPrice += thisCardProduct.price;
+       thisCart.totalNumber += thisCardProduct.amount;
+     }
+
+     thisCart.totalPrice = thisCart.subtotalPrice + thisCart.deliveryFee;
+
+    console.log('totalNumber: ', thisCart.totalNumber, 'subtotalPrice: ', thisCart.subtotalPrice, 'thisCart.totalPrice: ', thisCart.totalPrice);
+
+    }
 }
 
   class CartProduct{
@@ -449,8 +470,8 @@ addToCart(){
     thisCartProduct.getElements(element);
     thisCartProduct.initAmountWidget();
 
-    console.log('new CartProduct:', thisCartProduct);
-    console.log('productData', menuProduct);
+  //  console.log('new CartProduct:', thisCartProduct);
+  //  console.log('productData', menuProduct);
 
   }
 
@@ -490,7 +511,7 @@ addToCart(){
   const app = {
     initMenu: function(){
       const thisApp = this;
-      console.log('$$$$thisApp.data:', thisApp.data); //  w thisApp.data znajduje sie obiekt products, który zawiera poszczególne produkty
+    //  console.log('$$$$thisApp.data:', thisApp.data); //  w thisApp.data znajduje sie obiekt products, który zawiera poszczególne produkty
 
       for(let productData in thisApp.data.products){  // tworzymy pętle interująco po biekcie thisApp.data.products
          new Product(productData, thisApp.data.products[productData]); // tworzymy instancję dla każdego produktu (nie zapisujemy jej w const)
@@ -507,11 +528,11 @@ addToCart(){
 
     init: function(){
       const thisApp = this;
-      console.log('*** App starting ***');
-      console.log('thisApp:', thisApp);
-      console.log('classNames:', classNames);
-      console.log('settings:', settings);
-      console.log('templates:', templates);
+    //  console.log('*** App starting ***');
+    //  console.log('thisApp:', thisApp);
+    //  console.log('classNames:', classNames);
+    //  console.log('settings:', settings);
+    //  console.log('templates:', templates);
 
       thisApp.initData();
       thisApp.initMenu();
