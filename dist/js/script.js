@@ -305,7 +305,7 @@ addToCart(){
 }
 
 
- class AmountWidget{
+  class AmountWidget{
     constructor(element){
       const thisWidget = this;
 
@@ -314,8 +314,8 @@ addToCart(){
       thisWidget.setValue(thisWidget.input.value);
       thisWidget.initActions();
 
-      console.log('AmountWidget: ', thisWidget);
-      console.log('constructor arguments: ', element);
+  //    console.log('AmountWidget: ', thisWidget);
+  //    console.log('constructor arguments: ', element);
     }
 
   getElements(element){
@@ -382,7 +382,7 @@ addToCart(){
  }
 
 
-class Cart{
+  class Cart{
   constructor(element){
     const thisCart = this;
 
@@ -426,7 +426,46 @@ class Cart{
 
     console.log('adding product', menuProduct);
 
+    thisCart.products.push(menuProduct);
+    console.log('+++thisCart.products', thisCart.products);
+
   }
+}
+
+  class cartProduct{
+  constructor(menuProduct, element){
+
+    const thisCartProduct = this;
+
+    thisCartProduct.id = menuProduct.id;
+    thisCartProduct.name = menuProduct.name;
+    thisCartProduct.price = menuProduct.price;
+    thisCartProduct.priceSingle = menuProduct.priceSingle;
+    thisCartProduct.amount = menuProduct.amount;
+
+    thisCartProduct.params = JSON.parse(JSON.stringify(menuProduct.params)); // przekonwertowanie obiektu menuProduct.params na string, następnie wygenerowanie nowego będącego kopią
+
+    thisCartProduct.getElements(element);
+
+    console.log('new CartProduct:', thisCartProduct);
+    console.log('productData', menuProduct);
+
+  }
+
+  getElements(element){
+    const thisCartProduct = this;
+
+    thisCartProduct.dom = {};
+
+    thisCartProduct.dom.wrapper = element;
+    thisCartProduct.dom.amountWidget = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.amountWidget);
+    thisCartProduct.dom.price = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.price);
+    thisCartProduct.dom.edit = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.edit);
+    thisCartProduct.dom.remove = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.remove);
+
+
+  }
+
 }
 
 
