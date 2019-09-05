@@ -426,13 +426,13 @@ addToCart(){
 
     console.log('adding product', menuProduct);
 
-    thisCart.products.push(menuProduct);
-    console.log('+++thisCart.products', thisCart.products);
+    thisCart.products.push(new CartProduct(menuProduct, generatedDOM));
+    //console.log('+++thisCart.products', thisCart.products);
 
   }
 }
 
-  class cartProduct{
+  class CartProduct{
   constructor(menuProduct, element){
 
     const thisCartProduct = this;
@@ -443,9 +443,11 @@ addToCart(){
     thisCartProduct.priceSingle = menuProduct.priceSingle;
     thisCartProduct.amount = menuProduct.amount;
 
+
     thisCartProduct.params = JSON.parse(JSON.stringify(menuProduct.params)); // przekonwertowanie obiektu menuProduct.params na string, następnie wygenerowanie nowego będącego kopią
 
     thisCartProduct.getElements(element);
+    thisCartProduct.initAmountWidget();
 
     console.log('new CartProduct:', thisCartProduct);
     console.log('productData', menuProduct);
@@ -464,6 +466,21 @@ addToCart(){
     thisCartProduct.dom.remove = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.remove);
 
 
+  }
+
+  initAmountWidget(){ // tworzy instację klasy AmountWidget i zapisuje ją we właściwości produktu
+    const thisCartProduct = this;
+
+    thisCartProduct.amountWidget = new AmountWidget(thisCartProduct.dom.amountWidget);
+    thisCartProduct.dom.amountWidget.addEventListener('updated', function(event){
+      thisCartProduct.amount = thisCartProduct.amountWidget.value; // AmountWidget sam aktualizuję tę właściwość
+      thisCartProduct.price = thisCartProduct.priceSingle *  thisCartProduct.amount;
+      thisCartProduct.dom.price.innerHTML = thisCartProduct.price;
+
+
+
+
+    });
   }
 
 }
