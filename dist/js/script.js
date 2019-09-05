@@ -373,7 +373,9 @@ addToCart(){
   announce(){
     const thisWidget = this;
 
-    const event = new Event('updated');
+    const event = new Event('updated', {
+      bubbles: true
+    });
     thisWidget.element.dispatchEvent(event);
   }
 
@@ -406,6 +408,11 @@ addToCart(){
     thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger);
     thisCart.dom.productList = thisCart.dom.wrapper.querySelector(select.cart.productList);
 
+    thisCart.renderTotalsKeys = ['totalNumber', 'totalPrice', 'subtotalPrice', 'deliveryFee'];
+
+for(let key of thisCart.renderTotalsKeys){
+  thisCart.dom[key] = thisCart.dom.wrapper.querySelectorAll(select.cart[key]);
+}
   }
 
   initActions(){
@@ -414,6 +421,10 @@ addToCart(){
     thisCart.dom.toggleTrigger.addEventListener('click', function(event){
       thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
   });
+     thisCart.dom.productList.addEventListener('updated', function(){ // nasłuchujemy na liście produktów, w której umieszczamy produkty,
+                                                                       //w których znajduje się widget liczby sztuk, który generuje ten event.
+     thisCart.update();
+     });
   }
 
 
@@ -450,6 +461,12 @@ addToCart(){
 
     console.log('totalNumber: ', thisCart.totalNumber, 'subtotalPrice: ', thisCart.subtotalPrice, 'thisCart.totalPrice: ', thisCart.totalPrice);
 
+     for(let key of thisCart.renderTotalsKeys){
+       for(let elem of thisCart.dom[key]){  // interujemy po kązdym elem z kolekcji, zapisanej wcześniej pod jednym z kluczy w thisCart.renderTotalsKeys.
+                                            // Dla każdego z tych el ustawiamy właściwość koszyka, która ma ten sam klucz
+         elem.innterHTML = thisCart[key];
+       }
+     }
     }
 }
 
