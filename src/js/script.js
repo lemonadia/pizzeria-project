@@ -417,7 +417,7 @@ class Cart{
   add(menuProduct){
      const thisCart = this;
 
-     const generatedHTML = templates.cartProduct(app.productData);
+     const generatedHTML = templates.cartProduct(menuProduct);
 
     const generatedDOM = utils.createDOMFromHTML(generatedHTML);
   //  console.log('<<<<<generatedDOM:' generatedDOM);
