@@ -74,7 +74,7 @@
       defaultMax: 9,
     },
     cart: {
-      deliveryFee: 20,
+      defaultDeliveryFee: 20,
     },
   };
 
@@ -389,11 +389,11 @@ addToCart(){
     const thisCart = this;
 
     thisCart.products = []; // tablica, w której będziemy przechowywać produkty dodane do koszyka
+    thisCart.deliveryFee = settings.cart.defaultDeliveryFee;
 
     thisCart.getElements(element);
     thisCart.initActions();
 
-    thisCart.deliveryFee = settings.cart.deliveryFee;
 
 
     // console.log('%%% new Cart ', thisCart);
@@ -421,10 +421,17 @@ for(let key of thisCart.renderTotalsKeys){
     thisCart.dom.toggleTrigger.addEventListener('click', function(event){
       thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
   });
-     thisCart.dom.productList.addEventListener('updated', function(){ // nasłuchujemy na liście produktów, w której umieszczamy produkty,
-                                                                       //w których znajduje się widget liczby sztuk, który generuje ten event.
-     thisCart.update();
+     thisCart.dom.productList.addEventListener('updated', function(){
+        thisCart.update();
      });
+
+     thisCart.dom.productList.addEventListener('remove', function(event){
+       thisCart.remove(event.detail.cartProduct);
+    });
+
+
+
+
   }
 
 
@@ -468,6 +475,14 @@ for(let key of thisCart.renderTotalsKeys){
        }
      }
     }
+
+    remove(cartProduct){
+        const thisCart = this;
+        const index = thisCart.products.indexOf(cartProduct);
+        thisCart.products.splice(index, 1);
+        cartProduct.dom.wrapper.remove();
+        thisCart.update();
+      }
 }
 
   class CartProduct{
@@ -547,11 +562,11 @@ for(let key of thisCart.renderTotalsKeys){
     event.preventDefault();
     thisCartProduct.remove();
   });
-  
+
   console.log('czy dziala usuwanke?', thisCartProduct.remove);
 }
 
-} // koniec klasy
+}
 
 
   const app = {
