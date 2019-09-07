@@ -202,5 +202,28 @@
       }
     }
   ],
-  "order": []
+  "order": [
+    {
+      "address": "test",
+      "totalPrice": 29,
+      "id": 1
+    },
+    {
+      "address": "test",
+      "totalPrice": 29,
+      "id": 2
+    },
+    {
+      "address": "test",
+      "totalPrice": 80,
+      "id": 3
+    },
+    {
+      "totalPrice": 40,
+      "totalNumber": 1,
+      "subtotalPrice": 20,
+      "deliveryFee": 20,
+      "id": 4
+    }
+  ]
 }
