@@ -1,13 +1,12 @@
-/* global Handlebars, dataSource */
+/* global Handlebars */
 
-export const select = { // w tej stałej mamy zapisane wszystkie ustawienia i selektory!
-  templateOf: {    //obiekt
-    menuProduct: '#template-menu-product', //własciwość menuProduct, która zawiera selektor do szablonu produktu
-    cartProduct: '#template-cart-product', // CODE ADDED
-
+export const select = {
+  templateOf: {
+    menuProduct: '#template-menu-product',
+    cartProduct: '#template-cart-product',
   },
   containerOf: {
-    menu: '#product-list', // <div id="product-list" class="product-list container"></div>
+    menu: '#product-list',
     cart: '#cart',
   },
   all: {
@@ -21,7 +20,7 @@ export const select = { // w tej stałej mamy zapisane wszystkie ustawienia i se
     priceElem: '.product__total-price .price',
     imageWrapper: '.product__images',
     amountWidget: '.widget-amount',
-    cartButton: '[href="#add-to-cart"]',  // <a class="btn-primary" href="#add-to-cart">Add to cart</a>
+    cartButton: '[href="#add-to-cart"]',
   },
   widgets: {
     amount: {
@@ -30,26 +29,24 @@ export const select = { // w tej stałej mamy zapisane wszystkie ustawienia i se
       linkIncrease: 'a[href="#more"]',
     },
   },
-  // CODE ADDED START
-cart: {
-  productList: '.cart__order-summary',
-  toggleTrigger: '.cart__summary',
-  totalNumber: `.cart__total-number`,
-  totalPrice: '.cart__total-price strong, .cart__order-total .cart__order-price-sum strong',
-  subtotalPrice: '.cart__order-subtotal .cart__order-price-sum strong',
-  deliveryFee: '.cart__order-delivery .cart__order-price-sum strong',
-  form: '.cart__order',
-  formSubmit: '.cart__order [type="submit"]',
-  phone: '[name="phone"]',
-  address: '[name="address"]',
-},
-cartProduct: {
-  amountWidget: '.widget-amount',
-  price: '.cart__product-price',
-  edit: '[href="#edit"]',
-  remove: '[href="#remove"]',
-},
-// CODE ADDED END
+  cart: {
+    productList: '.cart__order-summary',
+    toggleTrigger: '.cart__summary',
+    totalNumber: `.cart__total-number`,
+    totalPrice: '.cart__total-price strong, .cart__order-total .cart__order-price-sum strong',
+    subtotalPrice: '.cart__order-subtotal .cart__order-price-sum strong',
+    deliveryFee: '.cart__order-delivery .cart__order-price-sum strong',
+    form: '.cart__order',
+    formSubmit: '.cart__order [type="submit"]',
+    phone: '[name="phone"]',
+    address: '[name="address"]',
+  },
+  cartProduct: {
+    amountWidget: '.widget-amount',
+    price: '.cart__product-price',
+    edit: '[href="#edit"]',
+    remove: '[href="#remove"]',
+  },
 };
 
 export const classNames = {
@@ -57,11 +54,9 @@ export const classNames = {
     wrapperActive: 'active',
     imageVisible: 'active',
   },
-  // CODE ADDED START
-cart: {
-  wrapperActive: 'active',
-},
-// CODE ADDED END
+  cart: {
+    wrapperActive: 'active',
+  },
 };
 
 export const settings = {
@@ -73,17 +68,14 @@ export const settings = {
   cart: {
     defaultDeliveryFee: 20,
   },
-
   db: {
-url: '//localhost:3131',
-product: 'product',
-order: 'order',
-},
-
+    url: '//localhost:3131',
+    product: 'product',
+    order: 'order',
+  },
 };
 
 export const templates = {
-  menuProduct: Handlebars.compile(document.querySelector(select.templateOf.menuProduct).innerHTML), // obiekt templates, którym metoda menuProduct jest tworzona za pomocą biblioteki Handlebars
+  menuProduct: Handlebars.compile(document.querySelector(select.templateOf.menuProduct).innerHTML),
   cartProduct: Handlebars.compile(document.querySelector(select.templateOf.cartProduct).innerHTML),
-
 };
