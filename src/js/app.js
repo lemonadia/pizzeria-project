@@ -1,6 +1,6 @@
 import {Product} from './components/Product.js';
 import {Cart} from './components/Cart.js';
-import {select, settings, classNames, templates} from './settings.js';
+import {select, settings} from './settings.js';
 
   const app = {
     initMenu: function(){
@@ -21,7 +21,7 @@ import {select, settings, classNames, templates} from './settings.js';
       thisApp.cart = new Cart(cartElem); //instancja klasy Cart - mozemy ja wywolywac poza obiektem app za pomoca app.cart
 
       thisApp.productList = document.querySelector(select.containerOf.menu);
-      thisApp.productList.addEventListener('ad-to-cart', function(event){
+      thisApp.productList.addEventListener('add-to-cart', function(event){
         app.cart.add(event.detail.product);
       });
 

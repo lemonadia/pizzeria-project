@@ -204,13 +204,17 @@
   ],
   "order": [
     {
+      "totalPrice": 29,
+      "totalNumber": 1,
+      "subtotalPrice": 9,
       "deliveryFee": 20,
-      "products": [],
       "id": 1
     },
     {
+      "totalPrice": 29,
+      "totalNumber": 1,
+      "subtotalPrice": 9,
       "deliveryFee": 20,
-      "products": [],
       "id": 2
     }
   ]
