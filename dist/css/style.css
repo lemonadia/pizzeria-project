@@ -233,7 +233,7 @@ input.error, select.error {
 }
 
 .header {
-  padding: 60px 0;
+  padding: 60px 0 96px 0;
   background: #333;
   color: #fff;
 }
@@ -264,6 +264,34 @@ input.error, select.error {
   font-size: 18px;
   font-weight: 300;
   font-style: italic;
+}
+
+.main-nav {
+  position: absolute;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-align: start;
+      align-items: flex-start;
+  -ms-flex-pack: start;
+      justify-content: flex-start;
+  bottom: -96px;
+}
+
+.main-nav a {
+  color: #ff6b6b;
+  text-decoration: none;
+  margin-right: 24px;
+  text-align: center;
+  padding: 12px 24px;
+  background: #262626;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.main-nav a.active {
+  background: #f2f2f2;
 }
 
 .cart {
