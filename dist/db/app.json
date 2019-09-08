@@ -204,26 +204,34 @@
   ],
   "order": [
     {
-      "address": "test",
-      "totalPrice": 29,
+      "deliveryFee": 20,
+      "products": [],
       "id": 1
     },
     {
-      "address": "test",
-      "totalPrice": 29,
+      "deliveryFee": 20,
+      "products": [],
       "id": 2
     },
     {
-      "address": "test",
-      "totalPrice": 80,
+      "deliveryFee": 20,
+      "products": [],
       "id": 3
     },
     {
-      "totalPrice": 40,
-      "totalNumber": 1,
-      "subtotalPrice": 20,
       "deliveryFee": 20,
+      "products": [],
       "id": 4
+    },
+    {
+      "deliveryFee": 20,
+      "products": [],
+      "id": 5
+    },
+    {
+      "deliveryFee": 20,
+      "products": [],
+      "id": 6
     }
   ]
 }
