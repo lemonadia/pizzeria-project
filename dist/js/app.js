@@ -1,8 +1,11 @@
 import {Product} from './components/Product.js';
 import {Cart} from './components/Cart.js';
 import {select, settings, classNames} from './settings.js';
+import {Booking} from './components/Booking.js';
+
 
   const app = {
+
     initMenu: function(){
       const thisApp = this;
     //  console.log('$$$$thisApp.data:', thisApp.data); //  w thisApp.data znajduje sie obiekt products, który zawiera poszczególne produkty
@@ -10,8 +13,6 @@ import {select, settings, classNames} from './settings.js';
       for(let productData in thisApp.data.products){  // tworzymy pętle interująco po biekcie thisApp.data.products
          new Product(thisApp.data.products[productData].id, thisApp.data.products[productData]); // tworzymy instancję dla każdego produktu (nie zapisujemy jej w const)
       }
-
-
     },
 
     initCart: function(){
@@ -64,22 +65,23 @@ import {select, settings, classNames} from './settings.js';
       thisApp.initPages();
       thisApp.initData();
       thisApp.initCart();
+      thisApp.initBooking();
     },
 
     initPages: function(){
     const thisApp = this;
 
-    thisApp.pages = Array.from(document.querySelector(select.containerOf.pages).children);
+    thisApp.pages = Array.from(document.querySelector(select.containerOf.pages).children); //przekazujemy metodzie Array.from znalezioną kolekcję elementów
     thisApp.navLinks = Array.from(document.querySelectorAll(select.nav.links));
 
     //thisApp.activatePage(thisApp.pages[0].id);
 
-    let pagesMatchingHash = [];
+    let pagesMatchingHash = []; // pusta tablica, będziemy ją filtrować niżej
 
     if(window.location.hash.length > 2){
       const idFromHash = window.location.hash.replace('#/', '');
 
-      pagesMatchingHash = thisApp.pages.filter(function(page){
+      pagesMatchingHash = thisApp.pages.filter(function(page){   //metoda filter dostępna jest tylko dla tablic, dlatego stworzona została tablica let pagesMatchingHash. funkcja filtrująca jako pierwszy argument otrzymuje element tablicy (element DOM wrappera strony)
         return page.id == idFromHash;
       });
       thisApp.activatePage(pagesMatchingHash.length ? pagesMatchingHash[0].id : thisApp.pages[0].id);
@@ -94,6 +96,7 @@ import {select, settings, classNames} from './settings.js';
         const href = clickedElement.getAttribute('href');
         const pageId = href.replace('#', '');
         //console.log('clickedElement: ', pageId);
+
         /*TODO: activate page */
         thisApp.activatePage(pageId);
       });
@@ -113,7 +116,16 @@ import {select, settings, classNames} from './settings.js';
 
     window.location.hash = '#/' + pageId;
   },
-  
+
+
+  initBooking: function(){
+    const thisApp = this;
+
+    const bookingElem = document.querySelector(select.containerOf.booking);
+    thisApp.booking = new Booking(bookingElem);
+
+  },
+
   };
 
 app.init();
