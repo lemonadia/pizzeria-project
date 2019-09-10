@@ -37,7 +37,7 @@ thisCart.dom[key] = thisCart.dom.wrapper.querySelectorAll(select.cart[key]);
   initActions(){
   const thisCart = this;
 
-  thisCart.dom.toggleTrigger.addEventListener('click', function(event){
+  thisCart.dom.toggleTrigger.addEventListener('click', function(){
     thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
     });
 
@@ -63,13 +63,11 @@ thisCart.dom[key] = thisCart.dom.wrapper.querySelectorAll(select.cart[key]);
   const url = settings.db.url + '/' + settings.db.order;
 
   const payload = {
-    address: 'test',
     totalPrice: thisCart.totalPrice,
     phone: thisCart.phone,
     address: thisCart.address,
     totalNumber: thisCart.totalNumber,
     subtotalPrice: thisCart.subtotalPrice,
-    totalPrice: thisCart.totalPrice,
     deliveryFee: thisCart.deliveryFee,
     products: []
   };

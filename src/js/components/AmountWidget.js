@@ -48,7 +48,7 @@ export class AmountWidget{
 
    const thisWidget = this;
 
-   thisWidget.input.addEventListener('change', function(event){
+   thisWidget.input.addEventListener('change', function(){
           thisWidget.setValue(thisWidget.input.value);
         });
 
