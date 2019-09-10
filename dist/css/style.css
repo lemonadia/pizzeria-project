@@ -30,14 +30,14 @@
   }
 }
 
-.h1, .page__title {
+.h1, .product__name, .page__title {
   font-family: "Oswald", sans-serif;
   font-size: 26px;
   font-weight: 500;
   text-transform: uppercase;
 }
 
-.h2, .booking-option-title, .floor-plan .table {
+.h2, .main-nav a, .booking-option-title, .floor-plan .table {
   font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;

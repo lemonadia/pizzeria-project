@@ -60,7 +60,7 @@ initAccordion(){
   const thisProduct = this;
 
   /* find the clickable trigger (the element that should react to clicking)*/
-  const clickableTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
+//  const clickableTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
 
   /* START: click event listener to trigger */
   thisProduct.accordionTrigger.addEventListener('click',function(){
@@ -205,7 +205,7 @@ initAmountWidget(){ // tworzy instację klasy AmountWidget i zapisuje ją we wł
 const thisProduct = this;
 
 thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
-thisProduct.amountWidgetElem.addEventListener('updated', function(event){
+thisProduct.amountWidgetElem.addEventListener('updated', function(){
   thisProduct.processOrder();
 });
 }
