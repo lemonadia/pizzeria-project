@@ -18,7 +18,7 @@ export class Booking{
   thisBooking.dom = {};
 
   thisBooking.dom.wrapper = bookingElem;
-   thisBooking.dom.wrapper.appendChild(utils.createDOMFromHTML(generatedHTML));
+  thisBooking.dom.wrapper.appendChild(utils.createDOMFromHTML(generatedHTML));
 
   thisBooking.dom.peopleAmount = thisBooking.dom.wrapper.querySelector(select.booking.peopleAmount);
   thisBooking.dom.hoursAmount = thisBooking.dom.wrapper.querySelector(select.booking.hoursAmount);

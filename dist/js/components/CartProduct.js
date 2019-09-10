@@ -1,9 +1,13 @@
-import {select} from '../settings.js';
-import {AmountWidget} from './AmountWidget.js';
+import {
+  select
+} from '../settings.js';
+import {
+  AmountWidget
+} from './AmountWidget.js';
 
 
-export class CartProduct{
-  constructor(menuProduct, element){
+export class CartProduct {
+  constructor(menuProduct, element) {
 
     const thisCartProduct = this;
 
@@ -19,12 +23,12 @@ export class CartProduct{
     thisCartProduct.initAmountWidget();
     thisCartProduct.initActions();
 
-  //  console.log('new CartProduct:', thisCartProduct);
-  //  console.log('productData', menuProduct);
+    //  console.log('new CartProduct:', thisCartProduct);
+    //  console.log('productData', menuProduct);
 
   }
 
-  getElements(element){
+  getElements(element) {
     const thisCartProduct = this;
 
     thisCartProduct.dom = {};
@@ -37,45 +41,45 @@ export class CartProduct{
 
   }
 
-  initAmountWidget(){ // tworzy instację klasy AmountWidget i zapisuje ją we właściwości produktu
+  initAmountWidget() { // tworzy instację klasy AmountWidget i zapisuje ją we właściwości produktu
     const thisCartProduct = this;
 
     thisCartProduct.amountWidget = new AmountWidget(thisCartProduct.dom.amountWidget);
-    thisCartProduct.dom.amountWidget.addEventListener('updated', function(){
+    thisCartProduct.dom.amountWidget.addEventListener('updated', function() {
       thisCartProduct.amount = thisCartProduct.amountWidget.value; // AmountWidget sam aktualizuję tę właściwość
-      thisCartProduct.price = thisCartProduct.priceSingle *  thisCartProduct.amount;
+      thisCartProduct.price = thisCartProduct.priceSingle * thisCartProduct.amount;
       thisCartProduct.dom.price.innerHTML = thisCartProduct.price;
 
     });
   }
 
-  remove(){
-      const thisCartProduct = this;
+  remove() {
+    const thisCartProduct = this;
 
-      const event = new CustomEvent('remove', {
-          bubbles: true,
-          detail: {
-            cartProduct: thisCartProduct,
-          },
-        });
+    const event = new CustomEvent('remove', {
+      bubbles: true,
+      detail: {
+        cartProduct: thisCartProduct,
+      },
+    });
 
-        thisCartProduct.dom.wrapper.dispatchEvent(event);
-      }
+    thisCartProduct.dom.wrapper.dispatchEvent(event);
+  }
 
-  initActions(){
-        const thisCartProduct = this;
+  initActions() {
+    const thisCartProduct = this;
 
-        thisCartProduct.dom.edit.addEventListener('click', function(event){
-          event.preventDefault();
-        });
+    thisCartProduct.dom.edit.addEventListener('click', function(event) {
+      event.preventDefault();
+    });
 
-        thisCartProduct.dom.remove.addEventListener('click', function(event){
-          event.preventDefault();
-          thisCartProduct.remove();
-        });
-      }
+    thisCartProduct.dom.remove.addEventListener('click', function(event) {
+      event.preventDefault();
+      thisCartProduct.remove();
+    });
+  }
 
-  getData(){
+  getData() {
     const thisCartProduct = this;
 
     const data = {
@@ -85,7 +89,7 @@ export class CartProduct{
       priceSingle: thisCartProduct.priceSingle,
       params: thisCartProduct.params,
     };
-    return data; 
+    return data;
 
   }
 }

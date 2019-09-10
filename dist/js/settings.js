@@ -31,15 +31,15 @@ export const select = {
       linkDecrease: 'a[href="#less"]',
       linkIncrease: 'a[href="#more"]',
     },
-  datePicker: {
-    wrapper: '.date-picker',
-    input: `input[name="date"]`,
-},
-hourPicker: {
-  wrapper: '.hour-picker',
-  input: 'input[type="range"]',
-  output: '.output',
-},
+    datePicker: {
+      wrapper: '.date-picker',
+      input: `input[name="date"]`,
+    },
+    hourPicker: {
+      wrapper: '.hour-picker',
+      input: 'input[type="range"]',
+      output: '.output',
+    },
 
   },
   cart: {
@@ -61,13 +61,13 @@ hourPicker: {
     remove: '[href="#remove"]',
   },
   booking: {
-   peopleAmount: '.people-amount',
-   hoursAmount: '.hours-amount',
-   tables: '.floor-plan .table',
- },
- nav: {
-   links: '.main-nav a',
- },
+    peopleAmount: '.people-amount',
+    hoursAmount: '.hours-amount',
+    tables: '.floor-plan .table',
+  },
+  nav: {
+    links: '.main-nav a',
+  },
 };
 
 export const classNames = {
@@ -79,15 +79,15 @@ export const classNames = {
     wrapperActive: 'active',
   },
   booking: {
-   loading: 'loading',
-   tableBooked: 'booked',
- },
- nav: {
-   active: 'active',
- },
- pages: {
-   active: 'active',
- },
+    loading: 'loading',
+    tableBooked: 'booked',
+  },
+  nav: {
+    active: 'active',
+  },
+  pages: {
+    active: 'active',
+  },
 };
 
 export const settings = {
@@ -101,14 +101,14 @@ export const settings = {
     defaultMax: 9,
   },
   datePicker: {
-   maxDaysInFuture: 14,
- },
+    maxDaysInFuture: 14,
+  },
   cart: {
     defaultDeliveryFee: 20,
   },
   booking: {
-   tableIdAttribute: 'data-table',
- },
+    tableIdAttribute: 'data-table',
+  },
   db: {
     url: '//localhost:3131',
     product: 'product',
