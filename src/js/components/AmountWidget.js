@@ -3,8 +3,12 @@ import {
   settings
 } from '../settings.js';
 
-export class AmountWidget {
+import {BaseWidget} from './BaseWidget.js';
+
+export class AmountWidget extends BaseWidget{
   constructor(element) {
+    super(element, settings.amountWidget.defaultValue);
+
     const thisWidget = this;
 
     thisWidget.getElements(element);
@@ -61,14 +65,5 @@ export class AmountWidget {
 
 
     });
-  }
-
-  announce() {
-    const thisWidget = this;
-
-    const event = new Event('updated', {
-      bubbles: true
-    });
-    thisWidget.element.dispatchEvent(event);
   }
 }
