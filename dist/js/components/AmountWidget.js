@@ -6,6 +6,7 @@ import {
   BaseWidget
 } from './BaseWidget.js';
 
+
 export class AmountWidget extends BaseWidget {
   constructor(wrapper) {
     super(wrapper, settings.amountWidget.defaultValue);
@@ -46,7 +47,7 @@ export class AmountWidget extends BaseWidget {
       thisWidget.value++;
     });
   }
-// sprawdza nie tylko, czy ustawiana wartość value jest liczbą, 
+// sprawdzas nie tylko, czy ustawiana wartość value jest liczbą,
 //ale również czy mieści się w przedziale zdefiniowanym w settings.amountWidget.
   isValid(newValue) {
     return !isNaN(newValue) && newValue >= settings.amountWidget.defaultMin && newValue <= settings.amountWidget.defaultMax;
