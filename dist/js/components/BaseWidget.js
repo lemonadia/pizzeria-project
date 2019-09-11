@@ -18,7 +18,7 @@ export class BaseWidget {  /*9.4*/
 
     return thisWidget.correctValue;
   }
-  
+
 //Setter zostanie wywołany, kiedy właściwości value zostanie przypisana jakaś wartość – np. za pomocą widget.value = 5;.
 //Przypisywana wartość – w tym przykładzie 5 – zostanie przekazana setterowi jako pierwszy argument, który nazwaliśmy assignedValue.
 

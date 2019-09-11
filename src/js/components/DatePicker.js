@@ -1,6 +1,13 @@
-import {select, settings} from '../settings.js';
-import {BaseWidget} from './BaseWidget.js';
-import {utils} from '../utils.js';
+import {
+  select,
+  settings
+} from '../settings.js';
+import {
+  BaseWidget
+} from './BaseWidget.js';
+import {
+  utils
+} from '../utils.js';
 
 export class DatePicker extends BaseWidget {
   constructor(wrapper) {
@@ -9,16 +16,16 @@ export class DatePicker extends BaseWidget {
 
     thisWidget.dom.input = thisWidget.dom.wrapper.querySelector(select.widgets.datePicker.input);
 
+
     thisWidget.initPlugin();
   }
 
   initPlugin() {
     const thisWidget = this;
-    
-        thisWidget.minDate = new Date(thisWidget.value); //tworzy obiekt daty, którego wartość to "teraz"
-        thisWidget.maxDate = utils.addDays(thisWidget.minDate, settings.datePicker.maxDaysInFuture); // uzyskanie daty przesuniętej o ileś dni
 
-        flatpickr(thisWidget.dom.input, options);
+    thisWidget.minDate = new Date(thisWidget.value); //tworzy obiekt daty, którego wartość to "teraz"
+    thisWidget.maxDate = utils.addDays(thisWidget.minDate, settings.datePicker.maxDaysInFuture); // uzyskanie daty przesuniętej o ileś dni
+
 
     const options = { //tworze obiekt options, który zawiera opcje pluginu flatpickr
       defaultDate: thisWidget.minDate,
@@ -34,11 +41,12 @@ export class DatePicker extends BaseWidget {
       locale: {
         "firstDayOfWeek": 1 // start week on Monday
       },
-      onChange: function(selectedDates, dateStr, instance) {
-        thisWidget.value = dateStr; //ustawiamy właściwości thisWidget.value na dateStr w momencie wykrycia zmiany wartości przez plugin
-      }
+ onChange: function(selectedDates, dateStr, instance) {
+    thisWidget.value = dateStr; //ustawiamy właściwości thisWidget.value na dateStr w momencie wykrycia zmiany wartości przez plugin
+}
+};
 
-    };
+   flatpickr(thisWidget.dom.input, options);
 
   }
 
@@ -50,8 +58,8 @@ export class DatePicker extends BaseWidget {
     return true;
   }
 
-  renderValue() {
-  //  const thisWidget = this;
+  renderValue(){
+
   }
 
 }
