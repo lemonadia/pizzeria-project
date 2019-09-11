@@ -4,8 +4,7 @@ import {utils} from '../utils.js';
 
 export class DatePicker extends BaseWidget {
   constructor(wrapper) {
-    super(wrapper, utils.dateToStr(newDate())); // utils.dateToStr przekształca obiekt daty na tekst w formacie rok-miesiąc-dzień, czyli np. '2019-12-31'.
-
+    super(wrapper, utils.dateToStr(new Date())); // utils.dateToStr przekształca obiekt daty na tekst w formacie rok-miesiąc-dzień, czyli np. '2019-12-31'.
     const thisWidget = this;
 
     thisWidget.dom.input = thisWidget.dom.wrapper.querySelector(select.widgets.datePicker.input);
@@ -15,6 +14,11 @@ export class DatePicker extends BaseWidget {
 
   initPlugin() {
     const thisWidget = this;
+    
+        thisWidget.minDate = new Date(thisWidget.value); //tworzy obiekt daty, którego wartość to "teraz"
+        thisWidget.maxDate = utils.addDays(thisWidget.minDate, settings.datePicker.maxDaysInFuture); // uzyskanie daty przesuniętej o ileś dni
+
+        flatpickr(thisWidget.dom.input, options);
 
     const options = { //tworze obiekt options, który zawiera opcje pluginu flatpickr
       defaultDate: thisWidget.minDate,
@@ -36,10 +40,6 @@ export class DatePicker extends BaseWidget {
 
     };
 
-    thisWidget.minDate = new Date(thisWidget.value); //tworzy obiekt daty, którego wartość to "teraz"
-    thisWidget.maxDate = utils.addDays(thisWidget.minDate, settings.datePicker.maxDaysInFuture); // uzyskanie daty przesuniętej o ileś dni
-
-    flatpickr(thisWidget.dom.input, options);
   }
 
   parseValue(newValue) {
@@ -51,6 +51,7 @@ export class DatePicker extends BaseWidget {
   }
 
   renderValue() {
+  //  const thisWidget = this;
   }
 
 }

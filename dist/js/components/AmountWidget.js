@@ -60,3 +60,5 @@ export class AmountWidget extends BaseWidget {
   }
 
 }
+
+/* AmountWidget, tylko uzupełnia bądź nadpisuje domyślne działanie widgetu, zdefiniowane w BaseWidget.*/
