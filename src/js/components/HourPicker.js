@@ -1,3 +1,6 @@
+/* global Handlebars */
+
+
 import {
   select,
   settings
