@@ -1,4 +1,4 @@
-/* global Handlebars */
+/* global flatpickr */
 
 import {
   select,
@@ -42,10 +42,7 @@ export class DatePicker extends BaseWidget {
       ],
       locale: {
         "firstDayOfWeek": 1 // start week on Monday
-      },
-     onChange: function(selectedDates, dateStr, instance) {
-      thisWidget.value = dateStr; //ustawiamy właściwości thisWidget.value na dateStr w momencie wykrycia zmiany wartości przez plugin
-     }
+      }
     };
 
     flatpickr(thisWidget.dom.input, options);
