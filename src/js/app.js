@@ -89,7 +89,7 @@ const app = {
     }else{
       thisApp.activatePage(thisApp.pages[0].id);
     }
-    }
+    
 
     for (let link of thisApp.navLinks) {
       link.addEventListener('click', function(event) {
