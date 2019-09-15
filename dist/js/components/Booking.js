@@ -114,18 +114,20 @@ export class Booking {
       thisBooking.makeBooked(booking.date, booking.hour, booking.duration, booking.table);
     }
 
+
+// dla pojedynczego wydarzenia cyklicznego musisz wielokrotnie uruchomić metodę makeBooked
+// – raz dla każdego dnia z zakresu dat zdefiniowanego dla date-pickera.
     for (let eventRepeat of eventsRepeat) {
 
       const minDate = utils.dateToStr(thisBooking.datePicker.minDate);
       const days = [];
-      //console.log('minDate: ', minDate);
 
       for (let i = 0; i < settings.datePicker.maxDaysInFuture; i++) {
 
-        let nextDay = utils.addDays(minDate, i);
-        let nextDate = utils.dateToStr(nextDay);
+        let nextDay = utils.addDays(minDate, i); //dodajemy dzień do daty minimalnej
+        let nextDate = utils.dateToStr(nextDay); //wyświetlamy date za pomoca dateToStr
 
-        days.push(nextDate);
+        days.push(nextDate); //dodaje nextDate do tabilcy days (push)
 
         for (let day of days) {
           eventRepeat.date = day;
@@ -153,5 +155,11 @@ export class Booking {
     }
 
     thisBooking.booked[date][hour].push(table);
+  }
+
+  updateDOM(){
+
+    const thisBooking = this;
+
   }
 }
