@@ -26,7 +26,7 @@ export class DatePicker extends BaseWidget {
     const thisWidget = this;
 
     thisWidget.minDate = new Date(thisWidget.value); //tworzy obiekt daty, którego wartość to "teraz"
-    thisWidget.maxDate = utils.addDays(thisWidget.minDate, settings.datePicker.maxDaysInFuture); // uzyskanie daty przesuniętej o ileś dni
+    thisWidget.maxDate = utils.addDays(thisWidget.minDate, settings.datePicker.maxDaysInFuture); // uzyskanie daty przesuniętej o ileś dni (maxDaysInFuture: 14,)
 
 
     const options = { //tworze obiekt options, który zawiera opcje pluginu flatpickr
@@ -43,9 +43,9 @@ export class DatePicker extends BaseWidget {
       locale: {
         "firstDayOfWeek": 1 // start week on Monday
       },
-      onChange: function(newValue){
-        thisWidget.input.value = newValue;
-      }
+   onChange: function(selectedDates, dateStr, instance) {
+       thisWidget.value = dateStr;
+     }
     };
 
     flatpickr(thisWidget.dom.input, options);

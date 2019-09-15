@@ -1,6 +1,7 @@
 import {
   select,
   templates,
+  classNames,
   settings
 } from '../settings.js';
 import {
@@ -40,6 +41,8 @@ export class Booking {
 
     thisBooking.dom.datePicker = thisBooking.dom.wrapper.querySelector(select.widgets.datePicker.wrapper);
     thisBooking.dom.hourPicker = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.wrapper);
+
+    thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
   }
 
   initWidgets() {
@@ -49,6 +52,10 @@ export class Booking {
     thisBooking.hoursAmount = new AmountWidget(thisBooking.dom.hoursAmount);
     thisBooking.datePicker = new DatePicker(thisBooking.dom.datePicker);
     thisBooking.hourPicker = new HourPicker(thisBooking.dom.hourPicker);
+
+    thisBooking.dom.wrapper.addEventListener('updated', function() {
+      thisBooking.updateDOM();
+    });
   }
 
   getData() {
@@ -115,8 +122,8 @@ export class Booking {
     }
 
 
-// dla pojedynczego wydarzenia cyklicznego musisz wielokrotnie uruchomić metodę makeBooked
-// – raz dla każdego dnia z zakresu dat zdefiniowanego dla date-pickera.
+    // dla pojedynczego wydarzenia cyklicznego musisz wielokrotnie uruchomić metodę makeBooked
+    // – raz dla każdego dnia z zakresu dat zdefiniowanego dla date-pickera.
     for (let eventRepeat of eventsRepeat) {
 
       const minDate = utils.dateToStr(thisBooking.datePicker.minDate);
@@ -139,6 +146,7 @@ export class Booking {
     }
 
     console.log('thisBooking.booked: ', thisBooking.booked);
+    thisBooking.updateDOM();
   }
 
   makeBooked(date, hour, duration, table) {
@@ -157,9 +165,23 @@ export class Booking {
     thisBooking.booked[date][hour].push(table);
   }
 
-  updateDOM(){
 
+  updateDOM() {
     const thisBooking = this;
 
+    //aktualne wartości dla daty i godziny:
+    thisBooking.date = thisBooking.datePicker.value;
+    thisBooking.hour = utils.hourToNumber(thisBooking.hourPicker.value);
+
+    for (let table of thisBooking.dom.tables) {
+      const tableNr = table.getAttribute('data-table');
+
+      if (thisBooking.booked[thisBooking.date] && thisBooking.booked[thisBooking.date][thisBooking.hour] && thisBooking.booked[thisBooking.date][thisBooking.hour].indexOf(tableNr)) {
+        table.classList.add(classNames.booking.tableBooked);
+        //console.log('table: ', table)
+      } else {
+        table.classList.remove(classNames.booking.tableBooked);
+      }
+    }
   }
 }
