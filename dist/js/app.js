@@ -19,8 +19,8 @@ const app = {
   initCart: function() {
     const thisApp = this;
 
-    const cartElem = document.querySelector(select.containerOf.cart); //przekazujemy metodzie initCart wrapper koszyka
-    thisApp.cart = new Cart(cartElem); //instancja klasy Cart - mozemy ja wywolywac poza obiektem app za pomoca app.cart
+    const cartElem = document.querySelector(select.containerOf.cart); //przekazujemy metodzie initCart wrapper (kontener, element okalajacy )koszyka
+    thisApp.cart = new Cart(cartElem); 
 
     thisApp.productList = document.querySelector(select.containerOf.menu);
     thisApp.productList.addEventListener('add-to-cart', function(event) {
@@ -89,7 +89,7 @@ const app = {
     }else{
       thisApp.activatePage(thisApp.pages[0].id);
     }
-    
+
 
     for (let link of thisApp.navLinks) {
       link.addEventListener('click', function(event) {

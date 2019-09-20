@@ -30,7 +30,7 @@ export class Cart {
     thisCart.dom = {}; // NOWOŚĆ - > obiekt przechowujący wszystkie el DOM wyszukane w komponencie koszyka
 
     thisCart.dom.wrapper = element;
-    thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger);
+    thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger); /*dodajemy definicję właściwości thisCart.dom.toggleTrigger, która znajduje w thisCart.dom.wrapper pojedynczy element o selektorze zapisanym w select.cart.toggleTrigger.*/
     thisCart.dom.productList = thisCart.dom.wrapper.querySelector(select.cart.productList);
     thisCart.dom.form = thisCart.dom.wrapper.querySelector(select.cart.form);
     thisCart.dom.phone = thisCart.dom.wrapper.querySelector(select.cart.phone);
@@ -65,43 +65,10 @@ export class Cart {
 
   }
 
-  sendOrder() {
 
-    const thisCart = this;
 
-    const url = settings.db.url + '/' + settings.db.order;
+  add(menuProduct) { //w metodzie add ta instancja produktu będzie dostępna jako menuProduct.
 
-    const payload = {
-      totalPrice: thisCart.totalPrice,
-      phone: thisCart.phone,
-      address: thisCart.address,
-      totalNumber: thisCart.totalNumber,
-      subtotalPrice: thisCart.subtotalPrice,
-      deliveryFee: thisCart.deliveryFee,
-      products: []
-    };
-
-    for (let product of thisCart.products) {
-      payload.products = product.getData();
-    }
-
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(payload),
-    };
-
-    fetch(url, options)
-      .then(function(response) {
-        return response.json();
-      }).then(function(parsedResponse) {
-        console.log('parsedResponse', parsedResponse)
-      });
-  }
-
-  add(menuProduct) {
     const thisCart = this;
 
     const generatedHTML = templates.cartProduct(menuProduct);
@@ -137,7 +104,7 @@ export class Cart {
     for (let key of thisCart.renderTotalsKeys) {
       for (let elem of thisCart.dom[key]) { // interujemy po kązdym elem z kolekcji, zapisanej wcześniej pod jednym z kluczy w thisCart.renderTotalsKeys.
         // Dla każdego z tych el ustawiamy właściwość koszyka, która ma ten sam klucz
-        elem.innterHTML = thisCart[key];
+        elem.innerHTML = thisCart[key];
       }
     }
   }
@@ -149,5 +116,42 @@ export class Cart {
     thisCart.products.splice(index, 1);
     cartProduct.dom.wrapper.remove();
     thisCart.update();
+  }
+
+
+  sendOrder() {
+
+    const thisCart = this;
+
+    const url = settings.db.url + '/' + settings.db.order;
+
+    const payload = {
+      totalPrice: thisCart.totalPrice,
+      phone: thisCart.phone,
+      address: thisCart.address,
+      totalNumber: thisCart.totalNumber,
+      subtotalPrice: thisCart.subtotalPrice,
+      deliveryFee: thisCart.deliveryFee,
+      products: []
+    };
+
+    for (let product of thisCart.products) {
+      payload.products.push(product.getData());
+    }
+
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    };
+
+    fetch(url, options)
+      .then(function(response) {
+        return response.json();
+      }).then(function(parsedResponse) {
+        console.log('parsedResponse', parsedResponse)
+      });
   }
 }
