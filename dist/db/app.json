@@ -1,5 +1,6 @@
 {
-  "product": [{
+  "product": [
+    {
       "id": "cake",
       "class": "small",
       "name": "Zio Stefano's Doughnut",
@@ -201,8 +202,63 @@
       }
     }
   ],
-  "order": [],
-  "event": [{
+  "order": [
+    {
+      "totalPrice": 29,
+      "totalNumber": 1,
+      "subtotalPrice": 9,
+      "deliveryFee": 20,
+      "products": [
+        {
+          "id": "cake",
+          "amount": 1,
+          "price": 9,
+          "priceSingle": 9,
+          "params": {}
+        }
+      ],
+      "id": 1
+    },
+    {
+      "totalPrice": 56,
+      "totalNumber": 2,
+      "subtotalPrice": 36,
+      "deliveryFee": 20,
+      "products": [
+        {
+          "id": "pizza",
+          "amount": 2,
+          "price": 36,
+          "priceSingle": 18,
+          "params": {
+            "sauce": {
+              "label": "Sauce",
+              "options": {
+                "tomato": "Tomato"
+              }
+            },
+            "toppings": {
+              "label": "Toppings",
+              "options": {
+                "olives": "Olives",
+                "greenPeppers": "Green peppers",
+                "basil": "Fresh basil"
+              }
+            },
+            "crust": {
+              "label": "pizza crust",
+              "options": {
+                "thin": "thin"
+              }
+            }
+          }
+        }
+      ],
+      "id": 2
+    }
+  ],
+  "event": [
+    {
       "id": 1,
       "date": "2019-09-15",
       "hour": "12:30",
@@ -220,7 +276,10 @@
       "repeat": "daily",
       "duration": 2,
       "ppl": 3,
-      "starters": ["bread", "lemonWater"]
+      "starters": [
+        "bread",
+        "lemonWater"
+      ]
     },
     {
       "id": 3,
@@ -230,7 +289,10 @@
       "repeat": "daily",
       "duration": 2,
       "ppl": 3,
-      "starters": ["bread", "lemonWater"]
+      "starters": [
+        "bread",
+        "lemonWater"
+      ]
     },
     {
       "id": 4,
@@ -250,7 +312,9 @@
       "repeat": "daily",
       "duration": 2,
       "ppl": 3,
-      "starters": ["lemonWater"]
+      "starters": [
+        "lemonWater"
+      ]
     },
     {
       "id": 5,
@@ -260,10 +324,13 @@
       "repeat": "daily",
       "duration": 2,
       "ppl": 3,
-      "starters": ["lemonWater"]
+      "starters": [
+        "lemonWater"
+      ]
     }
   ],
-  "booking": [{
+  "booking": [
+    {
       "id": 1,
       "date": "2019-09-16",
       "hour": "12:30",
@@ -272,7 +339,6 @@
       "duration": 3,
       "ppl": 3,
       "starters": []
-
     }
   ]
 }

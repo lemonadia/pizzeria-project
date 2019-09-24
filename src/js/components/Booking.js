@@ -24,6 +24,10 @@ export class Booking {
     thisBooking.render(bookingElem);
     thisBooking.initWidgets();
     thisBooking.getData();
+    thisBooking.tablePicker();
+
+    console.log('thisBooking: ', thisBooking);
+
 
   }
 
@@ -182,6 +186,26 @@ export class Booking {
       } else {
         table.classList.remove(classNames.booking.tableBooked);
       }
+    }
+  }
+  tablePicker() {
+    const thisBooking = this;
+    thisBooking.table = [];
+
+    for (let table of thisBooking.dom.tables) {
+      table.addEventListener('click', function(event) {
+        event.preventDefault();
+        table.classList.toggle(classNames.booking.tableSelected);
+      })
+
+      thisBooking.dom.datePicker.addEventListener('updated', function() {
+        table.classList.remove(classNames.booking.tableSelected);
+      });
+
+      thisBooking.dom.hourPicker.addEventListener('updated', function() {
+        table.classList.remove(classNames.booking.tableSelected);
+      });
+
     }
   }
 }

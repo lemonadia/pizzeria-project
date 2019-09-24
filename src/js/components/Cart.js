@@ -21,7 +21,6 @@ export class Cart {
     thisCart.getElements(element);
     thisCart.initActions();
 
-    // console.log('%%% new Cart ', thisCart);
   }
 
   getElements(element) {
@@ -30,7 +29,7 @@ export class Cart {
     thisCart.dom = {}; // NOWOŚĆ - > obiekt przechowujący wszystkie el DOM wyszukane w komponencie koszyka
 
     thisCart.dom.wrapper = element;
-    thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger); /*dodajemy definicję właściwości thisCart.dom.toggleTrigger, która znajduje w thisCart.dom.wrapper pojedynczy element o selektorze zapisanym w select.cart.toggleTrigger.*/
+    thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger);
     thisCart.dom.productList = thisCart.dom.wrapper.querySelector(select.cart.productList);
     thisCart.dom.form = thisCart.dom.wrapper.querySelector(select.cart.form);
     thisCart.dom.phone = thisCart.dom.wrapper.querySelector(select.cart.phone);
@@ -67,7 +66,7 @@ export class Cart {
 
 
 
-  add(menuProduct) { //w metodzie add ta instancja produktu będzie dostępna jako menuProduct.
+  add(menuProduct) {
 
     const thisCart = this;
 
