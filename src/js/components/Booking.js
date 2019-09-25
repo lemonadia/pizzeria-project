@@ -26,7 +26,6 @@ export class Booking {
     thisBooking.getData();
     thisBooking.tablePicker();
 
-    console.log('thisBooking: ', thisBooking);
 
 
   }
@@ -60,6 +59,10 @@ export class Booking {
     thisBooking.dom.wrapper.addEventListener('updated', function() {
       thisBooking.updateDOM();
     });
+
+
+
+
   }
 
   getData() {
@@ -178,6 +181,7 @@ export class Booking {
     thisBooking.hour = utils.hourToNumber(thisBooking.hourPicker.value);
 
     for (let table of thisBooking.dom.tables) {
+
       const tableNr = table.getAttribute('data-table');
 
       if (thisBooking.booked[thisBooking.date] && thisBooking.booked[thisBooking.date][thisBooking.hour] && thisBooking.booked[thisBooking.date][thisBooking.hour].indexOf(tableNr)) {
@@ -196,6 +200,15 @@ export class Booking {
       table.addEventListener('click', function(event) {
         event.preventDefault();
         table.classList.toggle(classNames.booking.tableSelected);
+
+
+        if(table.classList.contains(classNames.booking.tableSelected)){
+          thisBooking.table.push( parseInt(table.getAttribute('data-table')) );
+          console.log('thisBooking.table: ', thisBooking.table);
+        }
+
+
+
       })
 
       thisBooking.dom.datePicker.addEventListener('updated', function() {
@@ -208,4 +221,5 @@ export class Booking {
 
     }
   }
+
 }
