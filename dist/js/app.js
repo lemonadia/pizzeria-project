@@ -3,7 +3,6 @@ import {Product} from './components/Product.js';
 import {Cart} from './components/Cart.js';
 import {select, settings, classNames} from './settings.js';
 import {Booking} from './components/Booking.js';
-import {MainPage} from './components/MainPage.js';
 
 
 const app = {
@@ -21,7 +20,7 @@ const app = {
     const thisApp = this;
 
     const cartElem = document.querySelector(select.containerOf.cart); //przekazujemy metodzie initCart wrapper (kontener, element okalajacy )koszyka
-    thisApp.cart = new Cart(cartElem);
+    thisApp.cart = new Cart(cartElem); 
 
     thisApp.productList = document.querySelector(select.containerOf.menu);
     thisApp.productList.addEventListener('add-to-cart', function(event) {
@@ -68,7 +67,6 @@ const app = {
     thisApp.initData();
     thisApp.initCart();
     thisApp.initBooking();
-    thisApp.initMainPage();
   },
 
   initPages: function() {
@@ -131,11 +129,6 @@ const app = {
     thisApp.booking = new Booking(bookingElem);
 
   },
-
-  initMainPage: function(){
-    const thisApp = this;
-    thisApp.mainPage = new MainPage();
-  }
 
 };
 

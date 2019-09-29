@@ -1,4 +1,4 @@
-export class MainPage{
+/*export class MainPage{
 
   constructor(){
     let disOrderButWrapper = document.getElementById('orderButton');
@@ -13,4 +13,4 @@ export class MainPage{
   }
 
 
-}
+}*/

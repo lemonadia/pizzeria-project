@@ -267,7 +267,7 @@ input.error, select.error {
 }
 
 .logo__title {
-  margin: 0 0 12px 0;
+  margin: 0 0 12px;
   font-size: 48px;
   font-family: "Oswald", sans-serif;
   font-weight: 300;
@@ -293,7 +293,6 @@ input.error, select.error {
       flex-wrap: wrap;
   -ms-flex-pack: center;
       justify-content: center;
-  /* CAROUSEL */
 }
 
 .main-nav a {
@@ -302,8 +301,8 @@ input.error, select.error {
   font-weight: 500;
   text-decoration: none;
   text-align: center;
-  margin: 15px 0 0 0;
-  padding: 48px 0px;
+  margin: 15px 0 0;
+  padding: 48px 0;
   width: 49%;
   border: white 1px solid;
   border-radius: 9px;
@@ -324,7 +323,7 @@ input.error, select.error {
   font-size: 150%;
   margin: 15px 0.5%;
   border-radius: 4px;
-  padding: 28px 0px;
+  padding: 28px 0;
   line-height: 110%;
 }
 
@@ -385,6 +384,34 @@ input.error, select.error {
      object-fit: cover;
   -o-object-position: center;
      object-position: center;
+  border-radius: 4px;
+}
+
+.main_gallery {
+  margin-top: 8rem;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+}
+
+.main_gallery_img img {
+  width: 11rem;
+  height: 11rem;
+  -o-object-position: center;
+     object-position: center;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 4px;
+}
+
+.main_gallery_img {
+  position: relative;
+  width: 11rem;
+  height: 11rem;
+  margin-bottom: 1rem;
   border-radius: 4px;
 }
 

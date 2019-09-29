@@ -1,6 +1,4 @@
-*, *::before, *::after {
-  box-sizing: border-box;
-}
+
 
 .header {
   padding: ($base-size * 5) 0 ($base-size * 8) 0;
@@ -10,7 +8,6 @@
   &__wrapper {
     position: relative;
   }
-
 }
 
 .logo {
@@ -18,7 +15,7 @@
   line-height: 1;
 
   &__title {
-    margin: 0 0 $base-size 0;
+    margin: 0 0 $base-size;
     font-size: ($base-size * 4);
     font-family: $font-header;
     font-weight: $font-light;
@@ -27,7 +24,6 @@
     span {
       font-weight: $font-bold;
     }
-
   }
 
   &__subtitle {
@@ -39,22 +35,19 @@
 }
 
 .main-nav {
-//  position: absolute;
-//  @include flex(row, flex-start, flex-start);
-//  bottom: ($base-size * -8);
-font-family: "Oswald", sans-serif;
+  font-family: "Oswald", sans-serif;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 
-  a{
+  a {
     color: #fff;
     font-size: 190%;
     font-weight: 500;
     text-decoration: none;
     text-align: center;
-    margin: 15px 0 0 0 ;
-    padding: 48px 0px;
+    margin: 15px 0 0;
+    padding: 48px 0;
     width: 49%;
     border: white 1px solid;
     border-radius: 9px;
@@ -64,7 +57,6 @@ font-family: "Oswald", sans-serif;
     &.active {
       background: lighten($color-dark, 75%);
     }
-
   }
 
   div {
@@ -76,68 +68,88 @@ font-family: "Oswald", sans-serif;
     font-size: 150%;
     margin: 15px 0.5%;
     border-radius: $radius;
-    padding: 28px 0px;
+    padding: 28px 0;
     line-height: 110%;
 
-    span{
+    span {
       font-family: $font-text;
       font-size: 50%;
     }
-
   }
 
-#orderButton {
-  background-image: url("https://i.postimg.cc/vZvYKRBb/pizza-1.jpg");
-  margin-right: 0.5%;
+  #orderButton {
+    background-image: url("https://i.postimg.cc/vZvYKRBb/pizza-1.jpg");
+    margin-right: 0.5%;
+  }
+
+  #bookButton {
+    background-image: url("https://i.postimg.cc/43qFXd2G/pizza-2.jpg");
+    margin-left: 0.5%;
+  }
+
+  .hours {
+    border: 1px white solid;
+    border-radius: 8px;
+    background-color: #ff6b6b;
+  }
+
+  .carousel-indicators li {
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 100%;
+    margin-left: 0.7rem;
+    margin-right: 0.7rem;
+    background-color: #ccc;
+    top: 60px;
+  }
+
+  ol.carousel-indicators li.active {
+    background-color: #000;
+  }
+
+  .carousel-item {
+    margin-top: 5rem;
+  }
+
+  .carousel_img {
+    margin: 0;
+    padding: 0;
+  }
+
+  .carousel-item h1 {
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  .carousel_img img {
+    width: 11rem;
+    height: 11rem;
+    object-fit: cover;
+    object-position: center;
+    border-radius: $radius;
+  }
 }
 
-#bookButton {
-  background-image: url("https://i.postimg.cc/43qFXd2G/pizza-2.jpg");
-  margin-left: 0.5%;
+.main_gallery {
+  margin-top: 8rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-.hours{
-  border: 1px white solid;
-  border-radius: 8px;
-  background-color: #ff6b6b;
-
-
-}
-/* CAROUSEL */
-
-.carousel-indicators li {
-  width: 0.7rem;
-  height: 0.7rem;
-  border-radius: 100%;
-  margin-left: 0.7rem;
-  margin-right: 0.7rem;
-  background-color: #ccc;
-  top: 60px;
-}
-
-ol.carousel-indicators li.active {
-  background-color: #000;
-}
-
-.carousel-item {
-  margin-top: 5rem;
-}
-
-.carousel_img {
-  margin: 0;
-  padding: 0;
-}
-
-.carousel-item h1 {
-  margin-top: 1rem;
-  font-size: 1rem;
-  font-weight: bold;
-}
-
-.carousel_img img {
+.main_gallery_img img {
   width: 11rem;
   height: 11rem;
-  object-fit: cover;
   object-position: center;
+  object-fit: cover;
+  border-radius: $radius;
+}
+
+.main_gallery_img {
+  position: relative;
+  width: 11rem;
+  height: 11rem;
+  margin-bottom: 1rem;
   border-radius: $radius;
 }
