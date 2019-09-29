@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +8,13 @@
   <title>Pizzeria</title>
   <link href="https://fonts.googleapis.com/css?family=Lato:400,300i,700%7COswald:300,500,700&amp;subset=latin-ext" rel="stylesheet">
   <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <link rel="stylesheet" href="vendor/range-slider.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
   <header class="header">
@@ -20,10 +24,10 @@
           <h1 class="logo__title"><span>Mamma</span>Mia!</h1>
           <h2 class="logo__subtitle">the best homemade Italian food</h2>
         </div>
-        <div class="main-nav">
+        <!--     <div class="main-nav">
           <a href="#order">Order</a>
           <a href="#booking">Booking</a>
-        </div>
+        </div>-->
         <div id="cart" class="cart">
           <div class="cart__summary">
             <span class="cart__total-number">5</span>
@@ -61,17 +65,112 @@
     </div>
   </header>
 
-  <div id="pages">
-     <section id="order">
-       <div id="product-list" class="product-list container"></div>
-     </section>
-     <section id="booking">
-       <div class="booking-wrapper container"></div>
-     </section>
-   </div>
 
-   <script id="template-booking-widget" type="text/x-handlebars-template">
-     <div class="booking-widget">
+  <div id="main_page_wrapp" class="container">
+    <div class="main_page-wrapper">
+
+      <!-- MAIN -->
+
+      <div class="main-nav">
+        <a href="#order" id="orderButton" class="buttonOrder">
+          <span class="main-nav-button-main-text">Order Online</span><br />
+        </a>
+        <a href="#booking" id="bookButton" class="buttonOrder">
+          <span class="main-nav-button-main-text">Book a table</span><br />
+        </a>
+        <div class="hours">
+          OPENING HOURS: <br /> <span>TUE-SUN, 12PM - 12AM</span>
+        </div>
+      </div>
+
+
+    <!--Carousel Wrapper-->
+    <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel" data-interval="3000">
+      <!--Indicators-->
+      <ol class="carousel-indicators">
+        <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
+        <li data-target="#multi-item-example" data-slide-to="1"></li>
+        <li data-target="#multi-item-example" data-slide-to="2"></li>
+      </ol>
+      <!--/.Indicators-->
+      <!--Slides-->
+      <div class="carousel-inner" role="listbox">
+        <!--First slide-->
+        <div class="carousel-item active">
+
+          <div class="container">
+            <div class="row">
+              <div class="col-md-4 carousel_img">
+                <img src="https://i.postimg.cc/t4h1YppD/pizza-3.jpg" alt="Card image cap">
+              </div>
+
+              <div class="col-md-8">
+                <h1>AMAZING SERVICE!</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam egestas viverra tortor, eu ullamcorper dui imperdiet nec. Nunc sed dolor at elit lobortis sodales.</p>
+                <p>- Margaret Osborne</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!--/First slide-->
+        <!--Second slide-->
+        <div class="carousel-item">
+
+          <div class="container">
+            <div class="row">
+              <div class="col-md-4 carousel_img">
+                <img src="https://i.postimg.cc/7ZvGHf8f/pizza-1.jpg" alt="Card image cap">
+              </div>
+
+              <div class="col-md-8">
+                <h1>AMAZING SERVICE!</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam egestas viverra tortor, eu ullamcorper dui imperdiet nec. Nunc sed dolor at elit lobortis sodales.</p>
+                <p>- Margaret Osborne</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!--/Second slide-->
+        <!--Third slide-->
+        <div class="carousel-item">
+
+          <div class="container">
+            <div class="row">
+              <div class="col-md-4 carousel_img">
+                <img src="https://i.postimg.cc/Wbqqc0yB/pizza-7.jpg" alt="Card image cap">
+              </div>
+
+              <div class="col-md-8">
+                <h1>AMAZING SERVICE!</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam egestas viverra tortor, eu ullamcorper dui imperdiet nec. Nunc sed dolor at elit lobortis sodales.</p>
+                <p>- Margaret Osborne</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!--/Third slide-->
+      </div>
+      <!--/.Slides-->
+    </div>
+    <!--/.Carousel Wrapper-->
+  </div>
+</div>
+
+
+  <div id="pages">
+    <section id="order">
+      <div id="product-list" class="product-list container"></div>
+    </section>
+    <section id="booking">
+      <div class="booking-wrapper container"></div>
+    </section>
+  </div>
+
+  <script id="template-booking-widget" type="text/x-handlebars-template">
+    <div class="booking-widget">
        <h2 class="page__title no-spacing">Book a table</h2>
        <form class="booking-form">
          <div class="time-picker">
@@ -247,5 +346,8 @@
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script src="vendor/range-slider.min.js" type="module"></script>
   <script src="js/app.js" type="module"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 </body>
+
 </html>
