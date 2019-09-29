@@ -426,6 +426,31 @@ ol.carousel-indicators li.active {
   opacity: 0.5;
 }
 
+.main_gallery_img:hover .main_gallery_icon {
+  display: block;
+}
+
+.main_gallery_icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  text-align: center;
+}
+
+.fa-heart {
+  color: #ff6b6b;
+  font-size: 150%;
+  margin: 7px;
+}
+
+.fa-code-branch {
+  color: #fff;
+  font-size: 150%;
+  margin: 7px;
+}
+
 .footer {
   margin-top: 0.5rem;
 }
