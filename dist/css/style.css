@@ -310,10 +310,6 @@ input.error, select.error {
   background-size: cover;
 }
 
-.main-nav a.active {
-  background: #f2f2f2;
-}
-
 .main-nav div {
   color: #fff;
   background-color: #ff6b6b;
@@ -419,7 +415,7 @@ input.error, select.error {
   margin-top: 0.5rem;
 }
 
-.footer a {
+.footer .footer a {
   color: #ff6b6b;
   text-decoration: underline;
 }

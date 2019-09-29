@@ -54,9 +54,7 @@
     background-position: center;
     background-size: cover;
 
-    &.active {
-      background: lighten($color-dark, 75%);
-    }
+  
   }
 
   div {
@@ -157,7 +155,7 @@
 .footer {
   margin-top: 0.5rem;
 
-  a {
+  .footer a {
     color: $color-main;
     text-decoration: underline;
   }
