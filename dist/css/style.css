@@ -328,23 +328,23 @@ input.error, select.error {
   font-size: 50%;
 }
 
-.main-nav #orderButton {
+#orderButton {
   background-image: url("https://i.postimg.cc/vZvYKRBb/pizza-1.jpg");
   margin-right: 0.5%;
 }
 
-.main-nav #bookButton {
+#bookButton {
   background-image: url("https://i.postimg.cc/43qFXd2G/pizza-2.jpg");
   margin-left: 0.5%;
 }
 
-.main-nav .hours {
+.hours {
   border: 1px white solid;
   border-radius: 8px;
   background-color: #ff6b6b;
 }
 
-.main-nav .carousel-indicators li {
+.carousel-indicators li {
   width: 0.7rem;
   height: 0.7rem;
   border-radius: 100%;
@@ -354,26 +354,26 @@ input.error, select.error {
   top: 60px;
 }
 
-.main-nav ol.carousel-indicators li.active {
+ol.carousel-indicators li.active {
   background-color: #000;
 }
 
-.main-nav .carousel-item {
+.carousel-item {
   margin-top: 5rem;
 }
 
-.main-nav .carousel_img {
+.carousel_img {
   margin: 0;
   padding: 0;
 }
 
-.main-nav .carousel-item h1 {
+.carousel-item h1 {
   margin-top: 1rem;
   font-size: 1rem;
   font-weight: bold;
 }
 
-.main-nav .carousel_img img {
+.carousel_img img {
   width: 11rem;
   height: 11rem;
   -o-object-fit: cover;
@@ -415,7 +415,7 @@ input.error, select.error {
   margin-top: 0.5rem;
 }
 
-.footer .footer a {
+.footer a {
   color: #ff6b6b;
   text-decoration: underline;
 }

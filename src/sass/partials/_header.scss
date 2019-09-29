@@ -54,7 +54,7 @@
     background-position: center;
     background-size: cover;
 
-  
+
   }
 
   div {
@@ -74,6 +74,7 @@
       font-size: 50%;
     }
   }
+}
 
   #orderButton {
     background-image: url("https://i.postimg.cc/vZvYKRBb/pizza-1.jpg");
@@ -127,7 +128,7 @@
     object-position: center;
     border-radius: $radius;
   }
-}
+
 
 .main_gallery {
   margin-top: 8rem;
@@ -155,7 +156,7 @@
 .footer {
   margin-top: 0.5rem;
 
-  .footer a {
+  a {
     color: $color-main;
     text-decoration: underline;
   }

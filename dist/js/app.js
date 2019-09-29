@@ -20,7 +20,7 @@ const app = {
     const thisApp = this;
 
     const cartElem = document.querySelector(select.containerOf.cart); //przekazujemy metodzie initCart wrapper (kontener, element okalajacy )koszyka
-    thisApp.cart = new Cart(cartElem); 
+    thisApp.cart = new Cart(cartElem);
 
     thisApp.productList = document.querySelector(select.containerOf.menu);
     thisApp.productList.addEventListener('add-to-cart', function(event) {
@@ -86,7 +86,8 @@ const app = {
         return page.id == idFromHash;
       });
       thisApp.activatePage(pagesMatchingHash.length ? pagesMatchingHash[0].id : thisApp.pages[0].id);
-    }else{
+    }
+    else{
       thisApp.activatePage(thisApp.pages[0].id);
     }
 
