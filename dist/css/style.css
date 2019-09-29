@@ -415,6 +415,15 @@ input.error, select.error {
   border-radius: 4px;
 }
 
+.footer {
+  margin-top: 0.5rem;
+}
+
+.footer a {
+  color: #ff6b6b;
+  text-decoration: underline;
+}
+
 .cart {
   position: absolute;
   width: 300px;

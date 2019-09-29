@@ -153,3 +153,13 @@
   margin-bottom: 1rem;
   border-radius: $radius;
 }
+
+.footer {
+  margin-top: 0.5rem;
+
+  a {
+    color: $color-main;
+    text-decoration: underline;
+  }
+
+}
