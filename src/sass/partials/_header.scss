@@ -79,11 +79,23 @@
   #orderButton {
     background-image: url("https://i.postimg.cc/vZvYKRBb/pizza-1.jpg");
     margin-right: 0.5%;
+    position: relative;
   }
+
+  #orderButton:hover{
+    padding: 30px;
+  }
+
+
 
   #bookButton {
     background-image: url("https://i.postimg.cc/43qFXd2G/pizza-2.jpg");
     margin-left: 0.5%;
+    position: relative;
+  }
+
+  #bookButton:hover{
+    padding: 30px;
   }
 
   .hours {
@@ -91,6 +103,8 @@
     border-radius: 8px;
     background-color: #ff6b6b;
   }
+
+
 
   .carousel-indicators li {
     width: 0.7rem;
@@ -151,6 +165,11 @@
   height: 11rem;
   margin-bottom: 1rem;
   border-radius: $radius;
+  background-color: #000;
+
+}
+.main_gallery_img:hover img {
+  opacity: 0.5;
 }
 
 .footer {
@@ -158,7 +177,9 @@
 
   a {
     color: $color-main;
-    text-decoration: underline;
+    text-decoration: none;
+    display:block;
+    margin-bottom: 15px;
   }
 
 }
