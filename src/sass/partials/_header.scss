@@ -1,5 +1,3 @@
-
-
 .header {
   padding: ($base-size * 5) 0 ($base-size * 8) 0;
   background: $color-dark;
@@ -34,6 +32,11 @@
   }
 }
 
+.logo a {
+  text-decoration: none;
+  color: #fff;
+}
+
 .main-nav {
   font-family: "Oswald", sans-serif;
   display: flex;
@@ -53,8 +56,6 @@
     border-radius: 9px;
     background-position: center;
     background-size: cover;
-
-
   }
 
   div {
@@ -76,73 +77,68 @@
   }
 }
 
-  #orderButton {
-    background-image: url("https://i.postimg.cc/vZvYKRBb/pizza-1.jpg");
-    margin-right: 0.5%;
-    position: relative;
-  }
+#orderButton {
+  background-image: url("https://i.postimg.cc/vZvYKRBb/pizza-1.jpg");
+  margin-right: 0.5%;
+  position: relative;
+}
 
-  #orderButton:hover{
-    padding: 30px;
-  }
+#orderButton:hover {
+  padding: 30px;
+}
 
+#bookButton {
+  background-image: url("https://i.postimg.cc/43qFXd2G/pizza-2.jpg");
+  margin-left: 0.5%;
+  position: relative;
+}
 
+#bookButton:hover {
+  padding: 30px;
+}
 
-  #bookButton {
-    background-image: url("https://i.postimg.cc/43qFXd2G/pizza-2.jpg");
-    margin-left: 0.5%;
-    position: relative;
-  }
+.hours {
+  border: 1px white solid;
+  border-radius: 8px;
+  background-color: #ff6b6b;
+}
 
-  #bookButton:hover{
-    padding: 30px;
-  }
+.carousel-indicators li {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 100%;
+  margin-left: 0.7rem;
+  margin-right: 0.7rem;
+  background-color: #ccc;
+  top: 60px;
+}
 
-  .hours {
-    border: 1px white solid;
-    border-radius: 8px;
-    background-color: #ff6b6b;
-  }
+ol.carousel-indicators li.active {
+  background-color: #000;
+}
 
+.carousel-item {
+  margin-top: 5rem;
+}
 
+.carousel_img {
+  margin: 0;
+  padding: 0;
+}
 
-  .carousel-indicators li {
-    width: 0.7rem;
-    height: 0.7rem;
-    border-radius: 100%;
-    margin-left: 0.7rem;
-    margin-right: 0.7rem;
-    background-color: #ccc;
-    top: 60px;
-  }
+.carousel-item h1 {
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+}
 
-  ol.carousel-indicators li.active {
-    background-color: #000;
-  }
-
-  .carousel-item {
-    margin-top: 5rem;
-  }
-
-  .carousel_img {
-    margin: 0;
-    padding: 0;
-  }
-
-  .carousel-item h1 {
-    margin-top: 1rem;
-    font-size: 1rem;
-    font-weight: bold;
-  }
-
-  .carousel_img img {
-    width: 11rem;
-    height: 11rem;
-    object-fit: cover;
-    object-position: center;
-    border-radius: $radius;
-  }
-
+.carousel_img img {
+  width: 11rem;
+  height: 11rem;
+  object-fit: cover;
+  object-position: center;
+  border-radius: $radius;
+}
 
 .main_gallery {
   margin-top: 8rem;
@@ -166,8 +162,8 @@
   margin-bottom: 1rem;
   border-radius: $radius;
   background-color: #000;
-
 }
+
 .main_gallery_img:hover img {
   opacity: 0.5;
 }
@@ -177,14 +173,13 @@
 }
 
 .main_gallery_icon {
-	position: absolute;
+  position: absolute;
   top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	display: none;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
   text-align: center;
 }
-
 
 .fa-heart {
   color: $color-main;
@@ -198,15 +193,13 @@
   margin: 7px;
 }
 
-
 .footer {
   margin-top: 0.5rem;
 
   a {
     color: $color-main;
     text-decoration: none;
-    display:block;
+    display: block;
     margin-bottom: 15px;
   }
-
 }
