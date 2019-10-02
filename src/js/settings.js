@@ -11,6 +11,7 @@ export const select = {
     cart: '#cart',
     pages: '#pages',
     booking: '.booking-wrapper',
+    logo: '#logo',
   },
   all: {
     menuProducts: '#product-list > .product',

@@ -74,7 +74,7 @@ const app = {
 
     thisApp.pages = Array.from(document.querySelector(select.containerOf.pages).children); //przekazujemy metodzie Array.from znalezioną kolekcję elementów
     thisApp.navLinks = Array.from(document.querySelectorAll(select.nav.links));
-
+    thisApp.logo = document.querySelector(select.containerOf.logo);
     //thisApp.activatePage(thisApp.pages[0].id);
 
     let pagesMatchingHash = []; // pusta tablica, będziemy ją filtrować niżej
@@ -101,11 +101,22 @@ const app = {
         const href = clickedElement.getAttribute('href');
         const pageId = href.replace('#', '');
         //console.log('clickedElement: ', pageId);
+        thisApp.activatePage(pageId);
 
         /*TODO: activate page */
-        thisApp.activatePage(pageId);
       });
     }
+
+  thisApp.logo.addEventListener('click', function(event){
+    const clickedElement = this;
+    preventDefault();
+
+    const href = clickedElement.getAttribute('href');
+    const pageId = href.replace('#', '');
+
+  });
+
+
   },
 
   activatePage: function(pageId) {
