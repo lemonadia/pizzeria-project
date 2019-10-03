@@ -94,7 +94,7 @@ const app = {
 
     for (let link of thisApp.navLinks) {
       link.addEventListener('click', function(event) {
-        const clickedElement = this;
+        const clickedElement = event.target;
         event.preventDefault();
 
         /*TODO: get page id from href */
@@ -108,12 +108,12 @@ const app = {
     }
 
   thisApp.logo.addEventListener('click', function(event){
-    const clickedElement = this;
-    preventDefault();
+    const clickedElement = event.target;
+    event.preventDefault();
 
     const href = clickedElement.getAttribute('href');
     const pageId = href.replace('#', '');
-
+    thisApp.activatePage(pageId);
   });
 
 
